@@ -1,0 +1,85 @@
+{
+	"database": [
+		{
+			"ID": "Rx0000",
+			"name": "Red Flame Swordsman",
+			"description": "[Leader/Swordsman/Lvl 1]",
+			"color": "red",
+			"level": "1",
+			"card_type": "leader",
+			"cost": "0",
+			"throwaway_cost": "0",
+			"space": "1",
+			"strength": "1",
+			"health": "0",
+			"spell_speed": "0"
+		},
+		{
+			"ID": "Rx0001",
+			"name": "Blazing Flame Swordsman",
+			"description": "[Leader/Swordsman/Lvl 2]\nWenn diese Einheit angreift:\nErhöhe ihre STR bis zum Ende des Zuges um 1.",
+			"level": "2",
+			"card_type": "leader",
+			"cost": "2",
+			"space": "1",
+			"strength": "4"
+		},
+		{
+			"ID": "Rx0002",
+			"name": "Ignited Flame Swordsman",
+			"description": "[Leader/Swordsman/Lvl 3]\nWenn diese Einheit angreift:\nErhöhe ihre STR bis zum Ende des Zuges um 2.",
+			"level": "3",
+			"card_type": "leader",
+			"cost": "4",
+			"space": "1",
+			"strength": "8"
+		},
+		{
+			"ID": "Rx0003",
+			"name": "Master Flame Swordsman",
+			"description": "[Leader/Swordsman/Lvl 4]\nWenn diese Einheit angreift:\nErhöhe ihre STR bis zum Ende des Zuges um 3.",
+			"level": "4",
+			"card_type": "leader",
+			"cost": "6",
+			"space": "1",
+			"strength": "10"
+		},
+		{
+			"ID": "Rx0004",
+			"name": "Small Goblin",
+			"description": "[Goblin]\nHaste.",
+			"color": "red",
+			"level": "1",
+			"card_type": "unit",
+			"cost": "2",
+			"throwaway_cost": "2",
+			"space": "1",
+			"strength": "2",
+			"health": "2"
+		},
+		{
+			"ID": "Rx0005",
+			"name": "Sun Snake",
+			"description": "[Animal]",
+			"color": "red",
+			"level": "3",
+			"card_type": "unit",
+			"cost": "6",
+			"throwaway_cost": "4",
+			"space": "2",
+			"strength": "6",
+			"health": "6"
+		},
+		{
+			"ID": "Rx0006",
+			"name": "Fireball",
+			"description": "Target 1 unit. Deal 2 damage to it.",
+			"color": "red",
+			"level": "1",
+			"card_type": "magic",
+			"cost": "2",
+			"throwaway_cost": "1",
+			"spell_speed": "2"
+		}
+	]
+}
