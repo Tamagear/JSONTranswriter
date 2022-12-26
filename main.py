@@ -31,7 +31,8 @@ path_leader_base_card = 'content/card_base_leader.png'
 path_leader_additionals = 'content/leader_additionals.png'
 path_card_back_main = 'content/cardback_mainDeck.png'
 path_card_back_leader = 'content/cardback_leaderDeck.png'
-name_font = ImageFont.truetype('content/ImalsrithV2-Regular.ttf', 140)
+name_font = ImageFont.truetype('content/SecularOne-Regular.ttf', 115)
+small_name_font = ImageFont.truetype('content/SecularOne-Regular.ttf', 100)
 details_font = ImageFont.truetype('content/ImalsrithV2-Regular.ttf', 110)
 text_font = ImageFont.truetype('content/SecularOne-Regular.ttf', 60)
 stats_font = ImageFont.truetype('content/SecularOne-Regular.ttf', 110)
@@ -46,6 +47,7 @@ card_sprite_size = 1335, 760
 leader_sprite_size = 1335, 1572
 inner_card_sprite_offset = 200  # TODO: Online Database
 max_characters_per_description_line = 46
+max_name_length_for_big_name_font = 23
 # TODO: Multicolor Cards
 # TODO: Colorless Cards
 
@@ -131,8 +133,11 @@ def json_to_face():
             card_name = ''
             count = 1
             if len(linedata) > 1:
-                card_name = ' '.join(linedata[1:])
-                count = int(linedata[0])
+                if linedata[0].isdigit():
+                    card_name = ' '.join(linedata[1:])
+                    count = int(linedata[0])
+                else:
+                    card_name = line
             elif len(linedata) > 0:
                 if linedata[0] == '#LEADERS':
                     continue
@@ -208,7 +213,7 @@ def json_to_face():
             back_img.paste(current_card_back, (row*650, column*1050))
             copies_left -= 1
             row += 1
-            if row > 10:
+            if row >= 10:
                 row = 0
                 column += 1
 
@@ -218,11 +223,11 @@ def json_to_face():
     duration = (end_time - start_time).total_seconds()
     print('Completed in ' + str(duration) + "s.")
 
-    if play_audio_on_completion:
-        playsound(completed_sound)
-
     if show_result_on_completion:
         img.show()
+
+    if play_audio_on_completion:
+        playsound(completed_sound)
 
     # TODO: Open target directory
     # TODO: Leader Decks
@@ -326,15 +331,17 @@ def json_to_card(name, description, color, level, cost, throwaway_cost, show=Fal
         th = int((float(h)) * float(wpercent))
         placeholder = placeholder.resize((cw, th))
         placeholder = placeholder.crop((0, inner_card_sprite_offset, cw, inner_card_sprite_offset + ch))
-        img.paste(placeholder, (int(750 - cw / 2), 310)) #TODO: An Leader anpassen
+        img.paste(placeholder, (int(750 - cw / 2), 310))
 
     # Text
     I1 = ImageDraw.Draw(img)
-    I1.text((100, 100), name, font=name_font, fill='white')
+    use_small_name_font = len(name) > max_name_length_for_big_name_font
+    I1.text((70, 100 if use_small_name_font else 85), name, font=small_name_font if use_small_name_font else name_font,
+            fill='white')
     if not is_leader:
         I1.text((300, 1075), str(level), font=details_font, fill=c)
         I1.text((620, 1075), str(cost), font=details_font, fill=c)
-        I1.text((725, 1950), str(throwaway_cost), font=name_font, fill='white')
+        I1.text((710, 1925), str(throwaway_cost), font=name_font, fill='white')
         I1.text((75, 1200), reformat_card_description(description), font=text_font, fill='white')
 
     if show:

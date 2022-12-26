@@ -235,7 +235,7 @@
 		{
 			"ID": "Rx0013",
 			"name": "Lance and Spear - TAG TEAM",
-			"description": "[Fighter/TAG TEAM]If this unit is summoned to occupy a vertical space: It gains Haste. If this unit is summoned to occupy a horizontal space: This unit gain (+0/+4).",
+			"description": "[Fighter/TAG TEAM]If this unit is summoned to occupy a vertical space: It gains Haste. If this unit is summoned to occupy a horizontal space: This unit gains (+0/+4).",
 			"color": "red",
 			"level": "2",
 			"card_type": "unit",
