@@ -6,13 +6,14 @@ import pathlib
 import sys
 import time
 import tkinter.filedialog
+import shutil
+import threading
 from PIL import Image
 from PIL import ImageDraw
 from PIL import ImageFont
 from bing_image_downloader import downloader
 from random import randrange
 from playsound import playsound     # Version 1.2.2
-import shutil
 
 use_local_database = True           # Should the local or the online database be used?
 use_already_created_cards = True    # Should card images from already_created_cards_directory be used for decks containing them?
@@ -42,7 +43,7 @@ card_image_dir = os.path.join(pathlib.Path().resolve(), 'content\\tmp\\card_imag
 local_database = 'content/database/database.json'
 online_database_link = 'https://drive.google.com/file/d/13I9HAcJwxRFUnBdBLpbWJI_9KVebHC4w/view?usp=sharing' # TODO: Change to direct download
 completed_sound = 'content/completed_sound.mp3'
-version = '1.0.0'
+version = '1.1.0'
 card_sprite_size = 1335, 760
 leader_sprite_size = 1335, 1572
 inner_card_sprite_offset = 200  # TODO: Online Database
@@ -168,21 +169,15 @@ def json_to_face():
           ' different cards. This can take up to a few minutes.')
 
     paths = {}
+    threads = []
 
     for card_name, json in singletons:
-        is_unit_card = json['card_type'] == 'leader' or json['card_type'] == 'unit'
-        if is_unit_card:
-            _, _, path = json_to_unit_card(json['name'], json['description'], json['color'], json['level'],
-                                           json['cost'], json['throwaway_cost'], json['space'], json['strength'],
-                                           json['health'], is_leader=json['card_type'] == 'leader')
-            paths[json['ID']] = path
-        else:
-            _, _, path = json_to_card(json['name'], ('[Spell Speed ' + json['spell_speed'] + ']' if json['card_type'] == 'magic' else '') + json['description'],
-                                      json['color'], json['level'], json['cost'], json['throwaway_cost'])
-            paths[json['ID']] = path
+        x = threading.Thread(target=create_card, args=(paths, json))
+        threads.append(x)
+        x.start()
 
-        current_cards += 1
-        print(str(int((float(current_cards)/float(max_cards)*100))) + "%")
+    for thread in threads:
+        thread.join()
 
     # Create the Atlas
     print("Creating Atlas...")
@@ -239,6 +234,23 @@ def json_to_face():
         shutil.rmtree(temp_image_dir)
 
 
+def create_card(paths, json):
+    print("Starting Generation of \"" + json['name'] + "\".")
+    is_unit_card = json['card_type'] == 'leader' or json['card_type'] == 'unit'
+    if is_unit_card:
+        _, _, path = json_to_unit_card(json['name'], json['description'], json['color'], json['level'],
+                                       json['cost'], json['throwaway_cost'], json['space'], json['strength'],
+                                       json['health'], is_leader=json['card_type'] == 'leader')
+        paths[json['ID']] = path
+    else:
+        _, _, path = json_to_card(json['name'], (
+            '[Spell Speed ' + json['spell_speed'] + ']' if json['card_type'] == 'magic' else '') + json['description'],
+                                  json['color'], json['level'], json['cost'], json['throwaway_cost'])
+        paths[json['ID']] = path
+
+    print("Finished card \"" + json['name'] + "\".")
+
+
 def card_background_color(color):
     if color == 0 or color == 'red':  # red
         return 204, 102, 102
@@ -250,6 +262,19 @@ def card_background_color(color):
         return 102, 169, 204
     else:  # black
         return 54, 54, 66
+
+
+def card_font_color(color):
+    if color == 0 or color == 'red':  # red
+        return 204, 102, 102
+    elif color == 1 or color == 'purple':  # purple
+        return 141, 109, 174
+    elif color == 2 or color == 'green':  # green
+        return 153, 204, 153
+    elif color == 3 or color == 'blue':  # blue
+        return 102, 169, 204
+    else:  # black
+        return 167, 167, 204
 
 
 def placeholder_image(name):
@@ -318,6 +343,7 @@ def json_to_card(name, description, color, level, cost, throwaway_cost, show=Fal
 
     # Recoloring background / white parts
     c = card_background_color(color)
+    fc = card_font_color(color)
     img.putdata(set_frame_color(img, c))
 
     # Placeholder card sprite
@@ -327,10 +353,13 @@ def json_to_card(name, description, color, level, cost, throwaway_cost, show=Fal
         placeholder = placeholder.convert('RGBA')
         w, h = placeholder.size
         cw, ch = leader_sprite_size if is_leader else card_sprite_size
-        wpercent = (cw / w)
-        th = int((float(h)) * float(wpercent))
-        placeholder = placeholder.resize((cw, th))
-        placeholder = placeholder.crop((0, inner_card_sprite_offset, cw, inner_card_sprite_offset + ch))
+        fw = (cw/w)
+        fh = (ch/h)
+        scale = 1 if fw <= 1 and fh <= 1 else max((fw, fh))
+
+        placeholder = placeholder.resize((int(w * scale), int(h * scale)))
+        used_offset = inner_card_sprite_offset if int(h * scale) > ch + inner_card_sprite_offset else 0
+        placeholder = placeholder.crop((0, used_offset, cw, used_offset + ch))
         img.paste(placeholder, (int(750 - cw / 2), 310))
 
     # Text
@@ -339,8 +368,8 @@ def json_to_card(name, description, color, level, cost, throwaway_cost, show=Fal
     I1.text((70, 100 if use_small_name_font else 85), name, font=small_name_font if use_small_name_font else name_font,
             fill='white')
     if not is_leader:
-        I1.text((300, 1075), str(level), font=details_font, fill=c)
-        I1.text((620, 1075), str(cost), font=details_font, fill=c)
+        I1.text((300, 1075), str(level), font=details_font, fill=fc)
+        I1.text((620, 1075), str(cost), font=details_font, fill=fc)
         I1.text((710, 1925), str(throwaway_cost), font=name_font, fill='white')
         I1.text((75, 1200), reformat_card_description(description), font=text_font, fill='white')
 
@@ -357,6 +386,7 @@ def json_to_unit_card(name, description, color, level, cost, throwaway_cost, spa
                       save=True, is_leader=False):
     img, I1, path = json_to_card(name, description, color, level, cost, throwaway_cost, save=False, is_leader=is_leader)
     c = card_background_color(color)
+    fc = card_font_color(color)
 
     additionals = Image.open(path_leader_additionals if is_leader else path_unit_additionals)
     additionals = additionals.convert("RGBA")
@@ -367,12 +397,12 @@ def json_to_unit_card(name, description, color, level, cost, throwaway_cost, spa
     # Text
     I1 = ImageDraw.Draw(img)
     if is_leader:
-        I1.text((1162, 260), str(level), font=leader_level_font, fill=c)
-        I1.text((1338, 1960), str(cost), font=details_font, fill=c)
+        I1.text((1162, 260), str(level), font=leader_level_font, fill=fc)
+        I1.text((1338, 1960), str(cost), font=details_font, fill=fc)
         I1.text((725, 1915), str(strength), font=stats_font, fill='white')
         I1.text((75, 1200), reformat_card_description(description), font=text_font, fill='white')
     else:
-        I1.text((925, 1075), str(space), font=details_font, fill=c)
+        I1.text((925, 1075), str(space), font=details_font, fill=fc)
         I1.text((1130, 1925), str(strength) + " / " + str(health), font=stats_font, fill='white')
 
     if show:
