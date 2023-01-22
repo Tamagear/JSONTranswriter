@@ -32,6 +32,7 @@ path_leader_base_card = 'content/card_base_leader.png'
 path_leader_additionals = 'content/leader_additionals.png'
 path_card_back_main = 'content/cardback_mainDeck.png'
 path_card_back_leader = 'content/cardback_leaderDeck.png'
+path_card_back_life_cloth = 'content/cardback_leaderDeck.png'
 name_font = ImageFont.truetype('content/SecularOne-Regular.ttf', 115)
 small_name_font = ImageFont.truetype('content/SecularOne-Regular.ttf', 100)
 details_font = ImageFont.truetype('content/ImalsrithV2-Regular.ttf', 110)
@@ -51,6 +52,8 @@ max_characters_per_description_line = 46
 max_name_length_for_big_name_font = 23
 # TODO: Multicolor Cards
 # TODO: Colorless Cards
+# TODO: Level -> Rank
+# TODO: Life Cloth Cards (+Card Back, Base)
 
 
 def json_to_face():
@@ -119,12 +122,33 @@ def json_to_face():
                 data_entry['spell_speed'] = '0'
                 if data_entry['card_type'] == 'magic' and show_warnings:
                     print('WARNING! Card ' + data_entry['name'] + ' (ID: ' + data_entry['ID'] + ') had no spell speed assigned. It was set to 0.')
+            if 'passive_abilities' not in data_entry.keys():
+                data_entry['passive_abilities'] = []
+                if data_entry['card_type'] == 'leader' and show_warnings:
+                    print('WARNING! Leader ' + data_entry['name'] + ' (ID: ' + data_entry['ID'] + ') had no passive abilities assigned. It was set to [].')
+            if 'active_abilities' not in data_entry.keys():
+                data_entry['active_abilities'] = []
+                if data_entry['card_type'] == 'leader' and show_warnings:
+                    print('WARNING! Leader ' + data_entry['name'] + ' (ID: ' + data_entry['ID'] + ') had no active abilities assigned. It was set to [].')
+            if 'leader_attacks' not in data_entry.keys():
+                data_entry['leader_attacks'] = []
+                if data_entry['card_type'] == 'leader' and show_warnings:
+                    print('WARNING! Leader ' + data_entry['name'] + ' (ID: ' + data_entry['ID'] + ') had no attacks assigned. It was set to [].')
+            if 'life_cloth_thresholds' not in data_entry.keys():
+                data_entry['life_cloth_thresholds'] = []
+                if data_entry['card_type'] == 'leader':
+                    print('ERROR! Leader ' + data_entry['name'] + ' (ID: ' + data_entry['ID'] + ') had no life cloth thresholds assigned. This is crucial! Please fix this immediately!')
+            if 'is_life_cloth' not in data_entry.keys():
+                data_entry['is_life_cloth'] = '0'
+                if show_warnings:
+                    print('WARNING! Card ' + data_entry['name'] + ' (ID: ' + data_entry['ID'] + ') had not set if it is life cloth. It was set to false.')
 
     file_path_string = tkinter.filedialog.askopenfilename(title='Select Decklist Text File')
     start_time = datetime.datetime.now()
     singletons = []
     used_ids = []
     leaders = []
+    life_cloths = []
     counts = {}
 
     # Read Deck File
@@ -157,6 +181,8 @@ def json_to_face():
                     singletons.append((card_name, json))
                     if json['card_type'] == 'leader':
                         leaders.append(json['ID'])
+                    elif json['is_life_cloth'] == '1':
+                        life_cloths.append(json['ID'])
                     print('Deck contains ' + json['name'])
                 elif json != {}:
                     counts[json['ID']] += count
@@ -198,7 +224,8 @@ def json_to_face():
         path = paths[entry]
         current_image = Image.open(path)
         current_image = current_image.resize((650, 1050))
-        current_card_back = Image.open(path_card_back_leader if entry in leaders else path_card_back_main)
+        current_card_back = Image.open(path_card_back_leader if entry in leaders or entry in life_cloths
+                                       else path_card_back_main)
         current_card_back = current_card_back.resize((650, 1050))
         copies_left = count
         print("ATLAS: Adding " + str(count) + " copies of " + entry + ".")
@@ -240,12 +267,15 @@ def create_card(paths, json):
     if is_unit_card:
         _, _, path = json_to_unit_card(json['name'], json['description'], json['color'], json['level'],
                                        json['cost'], json['throwaway_cost'], json['space'], json['strength'],
-                                       json['health'], is_leader=json['card_type'] == 'leader')
+                                       json['health'], json['passive_abilities'], json['active_abilities'],
+                                       json['leader_attacks'], json['life_cloth_thresholds'],
+                                       is_leader=json['card_type'] == 'leader')
         paths[json['ID']] = path
     else:
         _, _, path = json_to_card(json['name'], (
-            '[Spell Speed ' + json['spell_speed'] + ']' if json['card_type'] == 'magic' else '') + json['description'],
-                                  json['color'], json['level'], json['cost'], json['throwaway_cost'])
+            '[' + spell_speed_to_str(json['spell_speed']) + ']\n' if json['card_type'] == 'magic' else '')
+                                  + json['description'], json['color'], json['level'], json['cost'],
+                                  json['throwaway_cost'])
         paths[json['ID']] = path
 
     print("Finished card \"" + json['name'] + "\".")
@@ -316,7 +346,7 @@ def set_frame_color(img, color):
     return new_img
 
 
-def reformat_card_description(description):
+def reformat_card_description(description, break_line_at_end=True):
     paragraphs = description.replace(']', ']\n').replace(' Once per turn', '\nOnce per turn').replace(' When', '\nWhen').split('\n')
     result = ''
     for paragraph in paragraphs:
@@ -331,8 +361,62 @@ def reformat_card_description(description):
                 is_first_word_of_line = True
             result += ('' if is_first_word_of_line else ' ') + word
             current_line_characters += length_increase
-        result += '\n'
+        if break_line_at_end:
+            result += '\n'
 
+    return result
+
+
+def spell_speed_to_str(spell_speed):
+    if spell_speed == '0':
+        return 'Chant / Slow'
+    elif spell_speed == '1':
+        return 'Trigger / Slow'
+    elif spell_speed == '2':
+        return 'Counter / Fast'
+    else:
+        return 'Rapid / Instant'
+
+
+def leader_subdescription(description, passives, actives, attacks, life_cloth_thresholds):
+    result = reformat_card_description(description, False)
+
+    for passive in passives:
+        result += '\n' + reformat_card_description(passive)
+
+    for active in actives:
+        if 'loyalty_cost' not in active.keys():
+            active['loyalty_cost'] = '0'
+        if 'mana_cost' not in active.keys():
+            active['mana_cost'] = '0'
+        if 'name' not in active.keys():
+            active['name'] = 'Active'
+        if 'description' not in active.keys():
+            active['description'] = ''
+
+        result += '\n[ACTIVE](' + str(active['loyalty_cost']) + 'L/' + str(active['mana_cost']) + 'M) ' +\
+                  active['name'] + ':\n' + reformat_card_description(active['description'])
+
+    for attack in attacks:
+        if 'loyalty_cost' not in attack.keys():
+            attack['loyalty_cost'] = '0'
+        if 'mana_cost' not in attack.keys():
+            attack['mana_cost'] = '0'
+        if 'name' not in attack.keys():
+            attack['name'] = 'Active'
+        if 'description' not in attack.keys():
+            attack['description'] = ''
+        if 'strength' not in attack.keys():
+            attack['strength'] = '0'
+
+        result += '\n[ATTACK](' + str(attack['loyalty_cost']) + 'L/ ' + str(attack['mana_cost']) + 'M) ' + \
+                  attack['name'] + ' :: ' + str(attack['strength']) + ':\n' + \
+                  reformat_card_description(attack['description'])
+
+    result += '['
+    for threshold in life_cloth_thresholds:
+        result += ' | ' + threshold + ' | '
+    result += ']'
     return result
 
 
@@ -372,6 +456,7 @@ def json_to_card(name, description, color, level, cost, throwaway_cost, show=Fal
         I1.text((620, 1075), str(cost), font=details_font, fill=fc)
         I1.text((710, 1925), str(throwaway_cost), font=name_font, fill='white')
         I1.text((75, 1200), reformat_card_description(description), font=text_font, fill='white')
+        # TODO: Spell Speed für Spells
 
     if show:
         img.show()
@@ -382,7 +467,8 @@ def json_to_card(name, description, color, level, cost, throwaway_cost, show=Fal
     return img, I1, path
 
 
-def json_to_unit_card(name, description, color, level, cost, throwaway_cost, space, strength, health, show=False,
+def json_to_unit_card(name, description, color, level, cost, throwaway_cost, space, strength, health, leader_passives,
+                      leader_actives, leader_attacks, leader_life_cloth_thresholds, show=False,
                       save=True, is_leader=False):
     img, I1, path = json_to_card(name, description, color, level, cost, throwaway_cost, save=False, is_leader=is_leader)
     c = card_background_color(color)
@@ -399,11 +485,12 @@ def json_to_unit_card(name, description, color, level, cost, throwaway_cost, spa
     if is_leader:
         I1.text((1162, 260), str(level), font=leader_level_font, fill=fc)
         I1.text((1338, 1960), str(cost), font=details_font, fill=fc)
-        I1.text((725, 1915), str(strength), font=stats_font, fill='white')
-        I1.text((75, 1200), reformat_card_description(description), font=text_font, fill='white')
+        I1.text((585, 1915), str(health)+' HP', font=stats_font, fill='white')
+        I1.text((75, 950), leader_subdescription(description, leader_passives, leader_actives, leader_attacks,
+                                                  leader_life_cloth_thresholds), font=text_font, fill='white')
     else:
         I1.text((925, 1075), str(space), font=details_font, fill=fc)
-        I1.text((1130, 1925), str(strength) + " / " + str(health), font=stats_font, fill='white')
+        I1.text((1067, 1925), str(strength) + " / " + str(health), font=stats_font, fill='white') # TODO: X 1000 bei STR/HP > 100
 
     if show:
         img.show()

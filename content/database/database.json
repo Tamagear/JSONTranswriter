@@ -3,56 +3,148 @@
 		{
 			"ID": "Rx0000",
 			"name": "Ifla, Burning Inventor",
-			"description": "[Leader/Magician/Lvl 1]Haste. Once per turn, when a unit or leader you control with Haste attacks an opponent, before damage calculation: Select a unit an enemy controls and deal 1 damage to it.",
+			"description": "[Leader/Magician/Lvl 1]",
+			"passive_abilities": [
+				"Once per turn, when a unit or leader you control with Haste attacks an opponent, before damage calculation: You may select a unit an enemy controls and if you do, deal 10 damage to it."
+			],
+			"active_abilities": [
+				{
+					"loyalty_cost": "1",
+					"mana_cost": "0",
+					"name": "Bursting Fire",
+					"description": "Select an allied unit and if you do, deal 10 damage to it."
+				}
+			],
+			"leader_attacks": [
+				{
+					"loyalty_cost": "1",
+					"mana_cost": "0",
+					"strength": "25",
+					"name": "Flamethrower Punch",
+					"description": ""
+				}
+			],
 			"color": "red",
 			"level": "1",
 			"card_type": "leader",
 			"cost": "0",
 			"throwaway_cost": "0",
 			"space": "0",
-			"strength": "1",
-			"health": "0",
-			"spell_speed": "0"
+			"strength": "0",
+			"health": "150",
+			"life_cloth_thresholds": [
+				"15",
+				"30",
+				"60",
+				"90",
+				"120"
+			],
+			"spell_speed": "0",
+			"is_life_cloth": "0"
 		},
 		{
 			"ID": "Rx0001",
 			"name": "Ifla, Flaming Architect",
-			"description": "[Leader/Magician/Lvl 2]Haste. Once per turn, when a unit or leader you control with Haste attacks an opponent, before damage calculation: Select a unit an enemy controls and deal 1 damage to it.",
+			"description": "[Leader/Magician/Lvl 2]",
+			"passive_abilities": [
+				"Once per turn, when a unit or leader you control with Haste attacks an opponent, before damage calculation: You may select a unit an enemy controls and if you do, deal 10 damage to it."
+			],
+			"active_abilities": [
+				{
+					"loyalty_cost": "1",
+					"description": "Select an allied unit and if you do, grant it Haste."
+				}
+			],
+			"leader_attacks": [
+				{
+					"loyalty_cost": "1",
+					"strength": "30"
+				}
+			],
 			"level": "2",
 			"card_type": "leader",
 			"cost": "1",
-			"strength": "4"
+			"health": "175",
+			"life_cloth_thresholds": [
+				"15",
+				"40",
+				"80",
+				"120",
+				"145"
+			]
 		},
 		{
 			"ID": "Rx0002",
 			"name": "Ifla, Eden's Architect",
-			"description": "[Leader/Magician/Lvl 3]Haste. Once per turn, when a unit or leader you control with Haste declares an attack: Create an attacking (3/3) 'Fragile Machine' token with Haste.",
+			"description": "[Leader/Magician/Lvl 3]",
+			"passive_abilities": [
+				"Once per turn, when a unit or leader you control with Haste declares an attack: Create an attacking (3/3) 'Fragile Machine' token with Haste."
+			],
+			"leader_attacks": [
+				{
+					"loyalty_cost": "1",
+					"strength": "40"
+				},
+				{
+					"loyalty_cost": "2",
+					"strength": "70",
+					"description": "You may select up to two enemy units and if you do, deal 20 damage to the selected units."
+				}
+			],
 			"level": "3",
 			"card_type": "leader",
 			"cost": "2",
-			"strength": "8"
+			"health": "200",
+			"life_cloth_thresholds": [
+				"15",
+				"40",
+				"80",
+				"120",
+				"160"
+			]
 		},
 		{
 			"ID": "Rx0003",
 			"name": "Ifla, The World Architect",
-			"description": "[Leader/Magician/Architect/Legend/Lvl 4]Haste. Once per turn, when a unit or leader you control with Haste declares an attack: Create attacking (3/3) 'Fragile Machine' tokens with Haste equal to your opponents Life Cloth total left.",
+			"description": "[Leader/Magician/Architect/Legend/Lvl 4]",
+			"passive_abilities": [
+				"Once per turn, when a unit or leader you control with Haste declares an attack: Create attacking (3/3) 'Fragile Machine' tokens with Haste equal to your opponents Life Cloth total left."
+			],
+			"leader_attacks": [
+				{
+					"loyalty_cost": "1",
+					"strength": "60"
+				},
+				{
+					"loyalty_cost": "2",
+					"strength": "100",
+					"description": "You may select up to two enemy units and if you do, deal 30 damage to the selected units."
+				}
+			],
 			"level": "4",
 			"card_type": "leader",
 			"cost": "3",
-			"strength": "12"
+			"health": "220",
+			"life_cloth_thresholds": [
+				"15",
+				"40",
+				"80",
+				"120",
+				"170"
+			]
 		},
 		{
 			"ID": "Rx0004",
 			"name": "Rocket Goblin",
-			"description": "[Goblin]Haste.",
+			"description": "[Goblin]",
 			"color": "red",
 			"level": "1",
 			"card_type": "unit",
-			"cost": "2",
+			"cost": "1",
 			"throwaway_cost": "2",
 			"space": "1",
-			"strength": "2",
-			"health": "2"
+			"strength": "10",
+			"health": "10"
 		},
 		{
 			"ID": "Rx0005",
@@ -64,32 +156,32 @@
 			"cost": "6",
 			"throwaway_cost": "5",
 			"space": "2",
-			"strength": "9",
-			"health": "9"
+			"strength": "90",
+			"health": "90"
 		},
 		{
 			"ID": "Rx0006",
 			"name": "Fireball",
-			"description": "Target 1 unit. Deal 2 damage to it.",
+			"description": "Target 1 unit. Deal 20 damage to it.",
 			"color": "red",
 			"level": "1",
 			"card_type": "magic",
 			"cost": "2",
 			"throwaway_cost": "1",
-			"spell_speed": "1"
+			"spell_speed": "2"
 		},
 		{
 			"ID": "Rx0007",
 			"name": "Dragon Knight of Hythe",
-			"description": "[Dragon/Knight/Legend]When this unit deals combat damage to a player, deal 3 damage to every unit which is controlled by them. If this unit has Haste, Field Spells cannot be targetted by card effects, but destroy all Field Spells if this unit dies and heal this unit by 8 when your turn ends.",
+			"description": "[Dragon/Knight/Legend]When this unit deals combat damage to a player, deal 30 damage to every unit which is controlled by them. If this unit has Haste, Field Spells cannot be targetted by card effects, but destroy all Field Spells if this unit dies. Heal this unit by 8 when your turn ends.",
 			"color": "red",
 			"level": "4",
 			"card_type": "unit",
 			"cost": "8",
 			"throwaway_cost": "6",
 			"space": "3",
-			"strength": "14",
-			"health": "18"
+			"strength": "140",
+			"health": "180"
 		},
 		{
 			"ID": "Rx0008",
@@ -105,33 +197,33 @@
 		{
 			"ID": "Rx0009",
 			"name": "Blazing Magic Enhancer",
-			"description": "[Magician]Units with Haste you control gain (+1/+1).",
+			"description": "[Magician]Units with Haste you control gain (+10/+10).",
+			"color": "red",
+			"level": "1",
+			"card_type": "unit",
+			"cost": "1",
+			"throwaway_cost": "2",
+			"space": "1",
+			"strength": "10",
+			"health": "20"
+		},
+		{
+			"ID": "Rx000a",
+			"name": "Inexperienced Engineer",
+			"description": "[Architect]When this unit enters the battlefield: You may discard a card, and if you do, select an enemy unit and deal 10 damage to it.",
 			"color": "red",
 			"level": "1",
 			"card_type": "unit",
 			"cost": "2",
 			"throwaway_cost": "2",
 			"space": "1",
-			"strength": "1",
-			"health": "2"
-		},
-		{
-			"ID": "Rx000a",
-			"name": "Inexperienced Engineer",
-			"description": "[Architect]When this unit enters the battlefield: You may discard a card, and if you do, select an enemy unit and deal 1 damage to it.",
-			"color": "red",
-			"level": "1",
-			"card_type": "unit",
-			"cost": "3",
-			"throwaway_cost": "2",
-			"space": "1",
-			"strength": "3",
-			"health": "4"
+			"strength": "30",
+			"health": "40"
 		},
 		{
 			"ID": "Rx000b",
 			"name": "Explosive Cage",
-			"description": "[Structure]Cannot attack. When another unit with Haste enters the battlefield under your control, deal 1 damage to this unit. When this unit is defeated: Select up to one card and if you do, destroy it.",
+			"description": "[Structure]Immovable. When another unit with Haste enters the battlefield under your control, deal 10 damage to this unit. When this unit is defeated: Select up to one card and if you do, destroy it.",
 			"color": "red",
 			"level": "1",
 			"card_type": "unit",
@@ -139,7 +231,7 @@
 			"throwaway_cost": "3",
 			"space": "2",
 			"strength": "0",
-			"health": "3"
+			"health": "30"
 		},
 		{
 			"ID": "Rx000c",
@@ -151,47 +243,47 @@
 			"cost": "2",
 			"throwaway_cost": "3",
 			"space": "1",
-			"strength": "2",
-			"health": "3"
+			"strength": "20",
+			"health": "30"
 		},
 		{
 			"ID": "Rx000d",
 			"name": "Priest of the Living Light",
-			"description": "[Cleric]When this unit enters the battlefield, you may choose another of your units. Select it and then heal it completely if it took damage, else deal 1 damage to it and grant it Haste. You may sacrifice this unit to grant another of your units Haste.",
+			"description": "[Cleric]When this unit enters the battlefield, you may choose another of your units. Select it and then heal it completely if it took damage, else deal 10 damage to it and grant it Haste. You may sacrifice this unit to grant another of your units Haste.",
 			"color": "red",
 			"level": "1",
 			"card_type": "unit",
-			"cost": "3",
+			"cost": "2",
 			"throwaway_cost": "2",
 			"space": "1",
-			"strength": "1",
-			"health": "2"
+			"strength": "10",
+			"health": "20"
 		},
 		{
 			"ID": "Rx000e",
 			"name": "Guidance Dog",
-			"description": "[Animal]Once per turn, if this unit has Haste, you may discard your entire Hand to draw 1 card.",
+			"description": "[Animal]Once per turn, if this unit has Haste, you may discard your entire Hand to draw 2 cards.",
 			"color": "red",
 			"level": "1",
 			"card_type": "unit",
 			"cost": "3",
 			"throwaway_cost": "2",
 			"space": "1",
-			"strength": "5",
-			"health": "4"
+			"strength": "50",
+			"health": "40"
 		},
 		{
 			"ID": "Rx000f",
 			"name": "Pyro-Maniac",
-			"description": "[Magician]Once per turn, when your leader attacks, give every allied unit with Haste (+1/+1) until the end of this turn.",
+			"description": "[Magician]Once per turn, when your leader attacks, give every allied unit with Haste (+10/+10) until the end of this turn.",
 			"color": "red",
 			"level": "2",
 			"card_type": "unit",
-			"cost": "4",
+			"cost": "3",
 			"throwaway_cost": "2",
 			"space": "1",
-			"strength": "6",
-			"health": "6"
+			"strength": "60",
+			"health": "60"
 		},
 		{
 			"ID": "Rx0010",
@@ -203,21 +295,21 @@
 			"cost": "4",
 			"throwaway_cost": "3",
 			"space": "1",
-			"strength": "4",
-			"health": "5"
+			"strength": "40",
+			"health": "50"
 		},
 		{
 			"ID": "Rx0011",
 			"name": "Cirrane Underground Fighter",
-			"description": "[Fighter]Once per turn, if this is the only unit attacking this turn, give this unit (+1/+1) for every unit and leader with Haste you control until the end of your turn.",
+			"description": "[Fighter]Once per turn, if this is the only unit attacking this turn, give this unit (+10/+10) for every unit and leader with Haste you control until the end of your turn.",
 			"color": "red",
 			"level": "2",
 			"card_type": "unit",
 			"cost": "4",
 			"throwaway_cost": "2",
 			"space": "1",
-			"strength": "7",
-			"health": "5"
+			"strength": "70",
+			"health": "50"
 		},
 		{
 			"ID": "Rx0012",
@@ -226,24 +318,24 @@
 			"color": "red",
 			"level": "2",
 			"card_type": "unit",
-			"cost": "5",
-			"throwaway_cost": "4",
+			"cost": "4",
+			"throwaway_cost": "3",
 			"space": "1",
-			"strength": "3",
-			"health": "3"
+			"strength": "30",
+			"health": "30"
 		},
 		{
 			"ID": "Rx0013",
 			"name": "Lance and Spear - TAG TEAM",
-			"description": "[Fighter/TAG TEAM]If this unit is summoned to occupy a vertical space: It gains Haste. If this unit is summoned to occupy a horizontal space: This unit gains (+0/+4).",
+			"description": "[Fighter/TAG TEAM]If this unit is summoned to occupy a vertical space: It gains Haste. If this unit is summoned to occupy a horizontal space: This unit gains (+0/+40).",
 			"color": "red",
 			"level": "2",
 			"card_type": "unit",
 			"cost": "5",
 			"throwaway_cost": "4",
 			"space": "2",
-			"strength": "6",
-			"health": "5"
+			"strength": "60",
+			"health": "50"
 		},
 		{
 			"ID": "Rx0014",
@@ -255,21 +347,21 @@
 			"cost": "5",
 			"throwaway_cost": "4",
 			"space": "1",
-			"strength": "4",
-			"health": "7"
+			"strength": "40",
+			"health": "70"
 		},
 		{
 			"ID": "Rx0015",
 			"name": "Meteor Mage",
-			"description": "[Magician]Once per turn, if this unit has Haste and target opponent has Life Cloth left, you may sacrifice this unit to deal 1 damage to target opponent.",
+			"description": "[Magician]Once per turn, if this unit has Haste and target opponent has Life Cloth left, you may sacrifice this unit to deal 10 damage to target opponent.",
 			"color": "red",
 			"level": "3",
 			"card_type": "unit",
 			"cost": "6",
 			"throwaway_cost": "5",
 			"space": "2",
-			"strength": "7",
-			"health": "6"
+			"strength": "70",
+			"health": "60"
 		},
 		{
 			"ID": "Rx0016",
@@ -281,8 +373,8 @@
 			"cost": "7",
 			"throwaway_cost": "5",
 			"space": "2",
-			"strength": "4",
-			"health": "4"
+			"strength": "40",
+			"health": "40"
 		},
 		{
 			"ID": "Rx0017",
@@ -298,7 +390,7 @@
 		{
 			"ID": "Rx0018",
 			"name": "Metal Enhancement Mk I",
-			"description": "Equip an allied unit. It gains (+2/+2). On your next Standby Phase, you may sacrifice the equipped unit and if you do, you may add a 'Metal Enhancement Mk II' from your Deck to your Hand.",
+			"description": "Equip an allied unit. It gains (+20/+20). On your next Standby Phase, you may sacrifice the equipped unit and if you do, you may add a 'Metal Enhancement Mk II' from your Deck to your Hand.",
 			"color": "red",
 			"level": "1",
 			"card_type": "magic",
@@ -309,7 +401,7 @@
 		{
 			"ID": "Rx0019",
 			"name": "Metal Enhancement Mk II",
-			"description": "Equip an allied unit. It gains (+3/+3). On your next Standby Phase, you may sacrifice the equipped unit and if you do, select an enemy unit and deal damage equal to the equipped unit's STR to it.",
+			"description": "Equip an allied unit. It gains (+30/+30). On your next Standby Phase, you may sacrifice the equipped unit and if you do, select an enemy unit and deal damage equal to the equipped unit's STR to it.",
 			"color": "red",
 			"level": "2",
 			"card_type": "magic",
@@ -320,7 +412,7 @@
 		{
 			"ID": "Rx001a",
 			"name": "The final battle",
-			"description": "Double all of your unit's and leader's STR until the end of your turn. At the end of your turn, destroy all allied units, then you take damage equal to the amount of units destroyed by this effect.",
+			"description": "Double all of your unit's and leader's STR until the end of your turn. At the end of your turn, destroy all allied units, then you take damage equal to the amount of units destroyed by this effect x 10.",
 			"color": "red",
 			"level": "3",
 			"card_type": "magic",
@@ -342,13 +434,62 @@
 		{
 			"ID": "Rx001c",
 			"name": "Unfair Advantage",
-			"description": "Select an attacking allied unit which is blocked by an enemy unit. Destroy the blocking unit. The attack is calculated as if there was no blocker. (Your opponent takes direct damage.)",
+			"description": "Select an attacking allied unit which is blocked by an enemy unit. Destroy the blocking unit. The attack is calculated as if there was no blocker and ignores your opponent's Life Cloth. (Your opponent takes direct damage.)",
 			"color": "red",
 			"level": "4",
 			"card_type": "magic",
 			"cost": "8",
 			"throwaway_cost": "5",
-			"spell_speed": "1"
+			"spell_speed": "2"
+		},
+		{
+			"ID": "Rx001d",
+			"name": "Final Explosion",
+			"description": "Select a unit. Deal damage to all units equal to the selected unit's STR.",
+			"color": "red",
+			"card_type": "magic",
+			"spell_speed": "0",
+			"is_life_cloth": "1"
+		},
+		{
+			"ID": "Rx001e",
+			"name": "Godlike Speed",
+			"description": "Reduce a unit's Waiting Time to 0.",
+			"color": "red",
+			"card_type": "magic",
+			"spell_speed": "2",
+			"is_life_cloth": "1"
+		},
+		{
+			"ID": "Rx001f",
+			"name": "Mark of Destruction",
+			"description": "The next time target opponent takes damage, double that damage.",
+			"color": "red",
+			"card_type": "magic",
+			"spell_speed": "2",
+			"is_life_cloth": "1"
+		},
+		{
+			"ID": "Rx0020",
+			"name": "Giant Bomb",
+			"description": "[Structure]Immovable. When this unit leaves the battlefield, select, then destroy all enemy units.",
+			"color": "red",
+			"card_type": "unit",
+			"space": "3",
+			"strength": "20",
+			"health": "300",
+			"is_life_cloth": "1"
+		},
+		{
+			"ID": "Rx0021",
+			"name": "Two-Headed Dragon",
+			"description": "[Dragon]Once per turn: If you control another unit, you can select it. This unit's STR becomes the selected unit's STR until the end of this turn, also this unit has to attack this turn, if possible.",
+			"color": "red",
+			"card_type": "unit",
+			"space": "2",
+			"strength": "0",
+			"health": "100",
+			"is_life_cloth": "1"
 		},
 		{
 			"ID": "Px0000",
