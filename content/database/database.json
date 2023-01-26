@@ -31,13 +31,13 @@
 			"throwaway_cost": "0",
 			"space": "0",
 			"strength": "0",
-			"health": "150",
+			"health": "120",
 			"life_cloth_thresholds": [
 				"15",
 				"30",
-				"60",
-				"90",
-				"120"
+				"50",
+				"75",
+				"90"
 			],
 			"spell_speed": "0",
 			"is_life_cloth": "0"
@@ -64,13 +64,13 @@
 			"level": "2",
 			"card_type": "leader",
 			"cost": "1",
-			"health": "175",
+			"health": "150",
 			"life_cloth_thresholds": [
 				"15",
 				"40",
 				"80",
-				"120",
-				"145"
+				"100",
+				"125"
 			]
 		},
 		{
@@ -78,7 +78,7 @@
 			"name": "Ifla, Eden's Architect",
 			"description": "[Leader/Magician/Lvl 3]",
 			"passive_abilities": [
-				"Once per turn, when a unit or leader you control with Haste declares an attack: Create an attacking (3/3) 'Fragile Machine' token with Haste."
+				"Once per turn, when a unit or leader you control with Haste declares an attack: Create an attacking (30/30) 'Fragile Machine' token with Haste."
 			],
 			"leader_attacks": [
 				{
@@ -94,13 +94,13 @@
 			"level": "3",
 			"card_type": "leader",
 			"cost": "2",
-			"health": "200",
+			"health": "175",
 			"life_cloth_thresholds": [
 				"15",
 				"40",
-				"80",
-				"120",
-				"160"
+				"90",
+				"110",
+				"140"
 			]
 		},
 		{
@@ -108,7 +108,7 @@
 			"name": "Ifla, The World Architect",
 			"description": "[Leader/Magician/Architect/Legend/Lvl 4]",
 			"passive_abilities": [
-				"Once per turn, when a unit or leader you control with Haste declares an attack: Create attacking (3/3) 'Fragile Machine' tokens with Haste equal to your opponents Life Cloth total left."
+				"Once per turn, when a unit or leader you control with Haste declares an attack: Create attacking (30/30) 'Fragile Machine' tokens with Haste equal to your opponents Life Cloth total left."
 			],
 			"leader_attacks": [
 				{
@@ -124,13 +124,13 @@
 			"level": "4",
 			"card_type": "leader",
 			"cost": "3",
-			"health": "220",
+			"health": "190",
 			"life_cloth_thresholds": [
 				"15",
 				"40",
-				"80",
-				"120",
-				"170"
+				"90",
+				"110",
+				"160"
 			]
 		},
 		{
@@ -492,40 +492,170 @@
 			"is_life_cloth": "1"
 		},
 		{
+			"ID": "Rx0022",
+			"name": "Booster Engineer",
+			"description": "[Architect]When this unit enters the battlefield: The next time a unit is summoned this turn, grant it Haste.",
+			"color": "red",
+			"level": "1",
+			"card_type": "unit",
+			"cost": "1",
+			"throwaway_cost": "1",
+			"space": "1",
+			"strength": "10",
+			"health": "10"
+		},
+		{
+			"ID": "Rx0023",
+			"name": "Rocket Engineer",
+			"description": "[Architect]When this unit enters the battlefield: The next time an allied unit is summoned this turn, grant it Haste.",
+			"color": "red",
+			"level": "1",
+			"card_type": "unit",
+			"cost": "3",
+			"throwaway_cost": "2",
+			"space": "1",
+			"strength": "20",
+			"health": "30"
+		},
+		{
 			"ID": "Px0000",
 			"name": "Lady Spark",
-			"description": "[Leader/Cosmos/Lvl 1]Once per turn, if one of your effects increases the Waiting Time of a unit, you may draw a card.",
+			"description": "[Leader/Cosmos/Lvl 1]",
+			"passive_abilities": [
+				"Once per turn, if one of your effects increases the Waiting Time of a unit, you may draw a card."
+			],
+			"leader_attacks": [
+				{
+					"loyalty_cost": "1",
+					"mana_cost": "0",
+					"strength": "20",
+					"name": "Small Spark",
+					"description": "If one of your effects increased the Waiting Time of a unit this turn, increase this attack's STR by 10 until the end of this turn."
+				},
+				{
+					"loyalty_cost": "1",
+					"mana_cost": "2",
+					"strength": "15",
+					"name": "Paralyzing Glare",
+					"description": "Select a unit an opponent controls. Increase it's Waiting Time by 1, but it can still block (even if its' Waiting Time is increased again)."
+				}
+			],
 			"color": "purple",
 			"level": "1",
 			"card_type": "leader",
-			"strength": "1"
+			"health": "120",
+			"life_cloth_thresholds": [
+				"15",
+				"30",
+				"50",
+				"75",
+				"90"
+			]
 		},
 		{
 			"ID": "Px0001",
 			"name": "Lady Star",
-			"description": "[Leader/Cosmos/Lvl 2]Once per turn, if one of your effects increases the Waiting Time of a unit, you may draw a card and if you do, select an enemy unit and increase its Waiting Time by 1.",
+			"description": "[Leader/Cosmos/Lvl 2]",
+			"passive_abilities": [
+				"Once per turn, if one of your effects increases the Waiting Time of a unit, you may draw a card and if you do, select an enemy unit and increase its Waiting Time by 1."
+			],
+			"leader_attacks": [
+				{
+					"loyalty_cost": "1",
+					"mana_cost": "0",
+					"strength": "35",
+					"name": "Star Strike",
+					"description": "If one of your effects increased the Waiting Time of a unit this turn, increase this attack's STR by 10 until the end of this turn."
+				},
+				{
+					"loyalty_cost": "1",
+					"mana_cost": "3",
+					"strength": "20",
+					"name": "Paralyzing Glare",
+					"description": "Select a unit an opponent controls. Increase it's Waiting Time by 1, but it can still block (even if its' Waiting Time is increased again)."
+				}
+			],
 			"level": "2",
 			"card_type": "leader",
 			"cost": "1",
-			"strength": "4"
+			"health": "150",
+			"life_cloth_thresholds": [
+				"15",
+				"40",
+				"80",
+				"100",
+				"125"
+			]
 		},
 		{
 			"ID": "Px0002",
 			"name": "Lady Galaxy",
-			"description": "[Leader/Cosmos/Lvl 3]Once per turn, if one of your effects increases the Waiting Time of a unit, you may draw a card and if you do, select an enemy unit and double its Waiting Time.",
+			"description": "[Leader/Cosmos/Lvl 3]",
+			"passive_abilities": [
+				"Once per turn, if one of your effects increases the Waiting Time of a unit, you may draw a card and if you do, select an enemy unit and double its Waiting Time."
+			],
+			"leader_attacks": [
+				{
+					"loyalty_cost": "1",
+					"mana_cost": "0",
+					"strength": "50",
+					"name": "Galaxy Strike",
+					"description": "If one of your effects increased the Waiting Time of a unit this turn, increase this attack's STR by 10 until the end of this turn."
+				},
+				{
+					"loyalty_cost": "1",
+					"mana_cost": "3",
+					"strength": "20",
+					"name": "Paralyzing Glare",
+					"description": "Select a unit an opponent controls. Increase it's Waiting Time by 1, but it can still block (even if its' Waiting Time is increased again)."
+				}
+			],
 			"level": "3",
 			"card_type": "leader",
 			"cost": "2",
-			"strength": "8"
+			"health": "175",
+			"life_cloth_thresholds": [
+				"15",
+				"40",
+				"90",
+				"110",
+				"140"
+			]
 		},
 		{
 			"ID": "Px0003",
 			"name": "Lady Universe",
-			"description": "[Leader/Cosmos/Legend/Lvl 4]When this unit enters the battlefield, draw cards equal to the combined Waiting Time of all units. Once per turn, if one of your effects increases the Waiting Time of a unit, its owner may draw cards equal to its Waiting Time.",
+			"description": "[Leader/Cosmos/Legend/Lvl 4]When this unit enters the battlefield, draw cards equal to the combined Waiting Time of all units. ",
+			"passive_abilities": [
+				"Once per turn, if one of your effects increases the Waiting Time of a unit, its owner may draw cards equal to its Waiting Time."
+			],
+			"leader_attacks": [
+				{
+					"loyalty_cost": "1",
+					"mana_cost": "5",
+					"strength": "50",
+					"name": "Universe Strike",
+					"description": "Increase this attack's strength by the combined Waiting Time of all units x10."
+				},
+				{
+					"loyalty_cost": "1",
+					"mana_cost": "3",
+					"strength": "20",
+					"name": "Paralyzing Glare",
+					"description": "Select a unit an opponent controls. Increase it's Waiting Time by 1, but it can still block (even if its' Waiting Time is increased again)."
+				}
+			],
 			"level": "4",
 			"card_type": "leader",
 			"cost": "3",
-			"strength": "12"
+			"health": "200",
+			"life_cloth_thresholds": [
+				"15",
+				"40",
+				"90",
+				"125",
+				"180"
+			]
 		},
 		{
 			"ID": "Px0004",
@@ -537,8 +667,8 @@
 			"cost": "2",
 			"throwaway_cost": "3",
 			"space": "1",
-			"strength": "2",
-			"health": "1"
+			"strength": "20",
+			"health": "10"
 		},
 		{
 			"ID": "Px0005",
@@ -547,11 +677,11 @@
 			"color": "purple",
 			"level": "1",
 			"card_type": "unit",
-			"cost": "2",
+			"cost": "1",
 			"throwaway_cost": "2",
 			"space": "1",
-			"strength": "1",
-			"health": "3"
+			"strength": "10",
+			"health": "30"
 		},
 		{
 			"ID": "Px0006",
@@ -563,8 +693,8 @@
 			"cost": "2",
 			"throwaway_cost": "2",
 			"space": "1",
-			"strength": "2",
-			"health": "3"
+			"strength": "20",
+			"health": "30"
 		},
 		{
 			"ID": "Px0007",
@@ -576,8 +706,8 @@
 			"cost": "3",
 			"throwaway_cost": "2",
 			"space": "1",
-			"strength": "2",
-			"health": "3"
+			"strength": "20",
+			"health": "30"
 		},
 		{
 			"ID": "Px0008",
@@ -589,8 +719,8 @@
 			"cost": "3",
 			"throwaway_cost": "2",
 			"space": "1",
-			"strength": "1",
-			"health": "4"
+			"strength": "10",
+			"health": "40"
 		},
 		{
 			"ID": "Px0009",
@@ -602,8 +732,8 @@
 			"cost": "3",
 			"throwaway_cost": "0",
 			"space": "1",
-			"strength": "4",
-			"health": "4"
+			"strength": "40",
+			"health": "40"
 		},
 		{
 			"ID": "Px000a",
@@ -615,8 +745,8 @@
 			"cost": "4",
 			"throwaway_cost": "2",
 			"space": "1",
-			"strength": "4",
-			"health": "4"
+			"strength": "40",
+			"health": "40"
 		},
 		{
 			"ID": "Px000b",
@@ -628,8 +758,8 @@
 			"cost": "4",
 			"throwaway_cost": "3",
 			"space": "1",
-			"strength": "1",
-			"health": "1"
+			"strength": "10",
+			"health": "10"
 		},
 		{
 			"ID": "Px000c",
@@ -641,8 +771,8 @@
 			"cost": "4",
 			"throwaway_cost": "2",
 			"space": "1",
-			"strength": "3",
-			"health": "3"
+			"strength": "30",
+			"health": "30"
 		},
 		{
 			"ID": "Px000d",
@@ -654,8 +784,8 @@
 			"cost": "5",
 			"throwaway_cost": "0",
 			"space": "2",
-			"strength": "6",
-			"health": "6"
+			"strength": "60",
+			"health": "60"
 		},
 		{
 			"ID": "Px000e",
@@ -667,8 +797,8 @@
 			"cost": "5",
 			"throwaway_cost": "0",
 			"space": "1",
-			"strength": "5",
-			"health": "5"
+			"strength": "50",
+			"health": "50"
 		},
 		{
 			"ID": "Px000f",
@@ -680,8 +810,8 @@
 			"cost": "5",
 			"throwaway_cost": "4",
 			"space": "1",
-			"strength": "4",
-			"health": "7"
+			"strength": "40",
+			"health": "70"
 		},
 		{
 			"ID": "Px0010",
@@ -693,8 +823,8 @@
 			"cost": "6",
 			"throwaway_cost": "0",
 			"space": "2",
-			"strength": "11",
-			"health": "11"
+			"strength": "110",
+			"health": "110"
 		},
 		{
 			"ID": "Px0011",
@@ -706,8 +836,8 @@
 			"cost": "6",
 			"throwaway_cost": "5",
 			"space": "2",
-			"strength": "8",
-			"health": "10"
+			"strength": "80",
+			"health": "100"
 		},
 		{
 			"ID": "Px0012",
@@ -719,8 +849,8 @@
 			"cost": "7",
 			"throwaway_cost": "-4",
 			"space": "2",
-			"strength": "13",
-			"health": "10"
+			"strength": "130",
+			"health": "100"
 		},
 		{
 			"ID": "Px0013",
@@ -732,8 +862,8 @@
 			"cost": "7",
 			"throwaway_cost": "-3",
 			"space": "2",
-			"strength": "8",
-			"health": "8"
+			"strength": "80",
+			"health": "80"
 		},
 		{
 			"ID": "Px0014",
@@ -745,8 +875,8 @@
 			"cost": "9",
 			"throwaway_cost": "-10",
 			"space": "3",
-			"strength": "18",
-			"health": "19"
+			"strength": "180",
+			"health": "190"
 		},
 		{
 			"ID": "Px0015",
@@ -757,18 +887,18 @@
 			"card_type": "magic",
 			"cost": "2",
 			"throwaway_cost": "2",
-			"spell_speed": "1"
+			"spell_speed": "2"
 		},
 		{
 			"ID": "Px0016",
 			"name": "Dream Link",
-			"description": "Give all units without an active Waiting Time (+X/+X), where X is the amount of units with an active Waiting Time until the end of this turn.",
+			"description": "Give all units without an active Waiting Time (+X/+X), where X is the amount of units with an active Waiting Time until the end of this turn, x10.",
 			"color": "purple",
-			"level": "1",
+			"level": "",
 			"card_type": "magic",
 			"cost": "2",
 			"throwaway_cost": "2",
-			"spell_speed": "1"
+			"spell_speed": "2"
 		},
 		{
 			"ID": "Px0017",
@@ -779,7 +909,7 @@
 			"card_type": "magic",
 			"cost": "3",
 			"throwaway_cost": "2",
-			"spell_speed": "1"
+			"spell_speed": "2"
 		},
 		{
 			"ID": "Px0018",
@@ -823,7 +953,7 @@
 			"card_type": "magic",
 			"cost": "7",
 			"throwaway_cost": "6",
-			"spell_speed": "1"
+			"spell_speed": "2"
 		},
 		{
 			"ID": "Px001c",
@@ -834,7 +964,54 @@
 			"card_type": "magic",
 			"cost": "8",
 			"throwaway_cost": "6",
-			"spell_speed": "1"
+			"spell_speed": "2"
+		},
+		{
+			"ID": "Px001d",
+			"name": "The Other Side",
+			"description": "Until the end of this turn, play with the top card of your deck revealed. You may play the revealed card by paying its' cost, -1.",
+			"color": "purple",
+			"card_type": "magic",
+			"spell_speed": "0",
+			"is_life_cloth": "1"
+		},
+		{
+			"ID": "Px001e",
+			"name": "Galaxy Discovery",
+			"description": "Search your deck for purple cards up to the number of units with an active Waiting Time, with cost up to the combined half of Waiting Time of allied units.",
+			"color": "purple",
+			"card_type": "magic",
+			"spell_speed": "0",
+			"is_life_cloth": "1"
+		},
+		{
+			"ID": "Px001f",
+			"name": "Mark of Time",
+			"description": "The next time one of target opponent unit's Waiting Time being increased, double that Waiting Time.",
+			"color": "purple",
+			"card_type": "magic",
+			"spell_speed": "3",
+			"is_life_cloth": "1"
+		},
+		{
+			"ID": "Px0020",
+			"name": "Dream Palace",
+			"description": "[Field]As an additional cost, destroy your current Field Spell (If you don't have a Field Spell active, you cannot play this card). Dream Creatures you control deal piercing damage.",
+			"color": "purple",
+			"card_type": "magic",
+			"spell_speed":  "0",
+			"is_life_cloth": "1"
+		},
+		{
+			"ID": "Px0021",
+			"name": "Parallel World Hooded Crow",
+			"description": "[Animal]As long as this unit is on the battlefield, every player draws cards from the bottom of their deck instead.",
+			"color": "purple",
+			"card_type": "unit",
+			"space": "1",
+			"strength": "30",
+			"health": "40",
+			"is_life_cloth": "1"
 		},
 		{
 			"ID": "Gx0000",
