@@ -1,0 +1,2068 @@
+{
+  "database": [
+    {
+      "ID": "Rx0000",
+      "name": "Ifla, Burning Inventor",
+      "description": "[Leader/Magician/Lvl 1]",
+      "passive_abilities": [
+        "Once per turn, when a unit or leader you control with Haste attacks an opponent, before damage calculation: You may select a unit an enemy controls and if you do, deal 10 damage to it."
+      ],
+      "active_abilities": [
+        {
+          "loyalty_cost": "1",
+          "mana_cost": "0",
+          "name": "Bursting Fire",
+          "description": "Select an allied unit and if you do, deal 10 damage to it."
+        }
+      ],
+      "leader_attacks": [
+        {
+          "loyalty_cost": "1",
+          "mana_cost": "0",
+          "strength": "25",
+          "name": "Flamethrower Punch",
+          "description": ""
+        }
+      ],
+      "color": "red",
+      "level": "1",
+      "card_type": "leader",
+      "cost": "0",
+      "throwaway_cost": "0",
+      "space": "0",
+      "strength": "0",
+      "health": "120",
+      "life_cloth_thresholds": [
+        "15",
+        "30",
+        "50",
+        "75",
+        "90"
+      ],
+      "spell_speed": "0",
+      "is_life_cloth": "0"
+    },
+    {
+      "ID": "Rx0001",
+      "name": "Ifla, Flaming Architect",
+      "description": "[Leader/Magician/Lvl 2]",
+      "passive_abilities": [
+        "Once per turn, when a unit or leader you control with Haste attacks an opponent, before damage calculation: You may select a unit an enemy controls and if you do, deal 10 damage to it."
+      ],
+      "active_abilities": [
+        {
+          "loyalty_cost": "1",
+          "description": "Select an allied unit and if you do, grant it Haste."
+        }
+      ],
+      "leader_attacks": [
+        {
+          "loyalty_cost": "1",
+          "strength": "30"
+        }
+      ],
+      "level": "2",
+      "card_type": "leader",
+      "cost": "1",
+      "health": "150",
+      "life_cloth_thresholds": [
+        "15",
+        "40",
+        "80",
+        "100",
+        "125"
+      ]
+    },
+    {
+      "ID": "Rx0002",
+      "name": "Ifla, Eden's Architect",
+      "description": "[Leader/Magician/Lvl 3]",
+      "passive_abilities": [
+        "Once per turn, when a unit or leader you control with Haste declares an attack: Create an attacking (30/30) 'Fragile Machine' token with Haste."
+      ],
+      "leader_attacks": [
+        {
+          "loyalty_cost": "1",
+          "strength": "40"
+        },
+        {
+          "loyalty_cost": "2",
+          "strength": "70",
+          "description": "You may select up to two enemy units and if you do, deal 20 damage to the selected units."
+        }
+      ],
+      "level": "3",
+      "card_type": "leader",
+      "cost": "2",
+      "health": "175",
+      "life_cloth_thresholds": [
+        "15",
+        "40",
+        "90",
+        "110",
+        "140"
+      ]
+    },
+    {
+      "ID": "Rx0003",
+      "name": "Ifla, The World Architect",
+      "description": "[Leader/Magician/Architect/Legend/Lvl 4]",
+      "passive_abilities": [
+        "Once per turn, when a unit or leader you control with Haste declares an attack: Create attacking (30/30) 'Fragile Machine' tokens with Haste equal to your opponents Life Cloth total left."
+      ],
+      "leader_attacks": [
+        {
+          "loyalty_cost": "1",
+          "strength": "60"
+        },
+        {
+          "loyalty_cost": "2",
+          "strength": "100",
+          "description": "You may select up to two enemy units and if you do, deal 30 damage to the selected units."
+        }
+      ],
+      "level": "4",
+      "card_type": "leader",
+      "cost": "3",
+      "health": "190",
+      "life_cloth_thresholds": [
+        "15",
+        "40",
+        "90",
+        "110",
+        "160"
+      ]
+    },
+    {
+      "ID": "Rx0004",
+      "name": "Rocket Goblin",
+      "description": "[Goblin]",
+      "color": "red",
+      "card_type": "unit",
+      "space": "1",
+      "strength": "10",
+      "health": "30"
+    },
+    {
+      "ID": "Rx0005",
+      "name": "Sun Snake",
+      "description": "[Animal]",
+      "color": "red",
+      "level": "3",
+      "card_type": "unit",
+      "cost": "6",
+      "throwaway_cost": "5",
+      "space": "2",
+      "strength": "90",
+      "health": "90"
+    },
+    {
+      "ID": "Rx0006",
+      "name": "Fireball",
+      "description": "Target 1 unit. Deal 20 damage to it.",
+      "color": "red",
+      "card_type": "magic",
+      "spell_speed": "2"
+    },
+    {
+      "ID": "Rx0007",
+      "name": "Dragon Knight of Hythe",
+      "description": "[Dragon/Knight/Legend]When this unit deals combat damage to a player, deal 30 damage to every unit which is controlled by them. If this unit has Haste, Field Spells cannot be targetted by card effects, but destroy all Field Spells if this unit dies. Heal this unit by 8 when your turn ends.",
+      "color": "red",
+      "level": "4",
+      "card_type": "unit",
+      "cost": "8",
+      "throwaway_cost": "6",
+      "space": "3",
+      "strength": "140",
+      "health": "180"
+    },
+    {
+      "ID": "Rx0008",
+      "name": "Storm Valley",
+      "description": "[Field]Units you control have Haste. Once per turn, when you activate a spell or an ability which deals non-combat damage to a unit or player, you may decrease the Waiting Time of one of your units by 1.",
+      "color": "red",
+      "level": "2",
+      "card_type": "magic",
+      "cost": "5",
+      "throwaway_cost": "2",
+      "spell_speed": "0"
+    },
+    {
+      "ID": "Rx0009",
+      "name": "Blazing Magic Enhancer",
+      "description": "[Magician]Units with Haste you control gain (+10/+10).",
+      "color": "red",
+      "level": "1",
+      "card_type": "unit",
+      "cost": "1",
+      "throwaway_cost": "2",
+      "space": "1",
+      "strength": "10",
+      "health": "20"
+    },
+    {
+      "ID": "Rx000a",
+      "name": "Inexperienced Engineer",
+      "description": "[Architect]When this unit enters the battlefield: You may discard a card, and if you do, select an enemy unit and deal 10 damage to it.",
+      "color": "red",
+      "level": "1",
+      "card_type": "unit",
+      "cost": "2",
+      "throwaway_cost": "2",
+      "space": "1",
+      "strength": "30",
+      "health": "40"
+    },
+    {
+      "ID": "Rx000b",
+      "name": "Explosive Cage",
+      "description": "[Structure]Immovable. When another unit with Haste enters the battlefield under your control, deal 10 damage to this unit. When this unit is defeated: Select up to one card and if you do, destroy it.",
+      "color": "red",
+      "level": "1",
+      "card_type": "unit",
+      "cost": "2",
+      "throwaway_cost": "3",
+      "space": "2",
+      "strength": "0",
+      "health": "30"
+    },
+    {
+      "ID": "Rx000c",
+      "name": "Builder Apprentice",
+      "description": "[Architect]",
+      "color": "red",
+      "level": "1",
+      "card_type": "unit",
+      "cost": "2",
+      "throwaway_cost": "3",
+      "space": "1",
+      "strength": "20",
+      "health": "30"
+    },
+    {
+      "ID": "Rx000d",
+      "name": "Priest of the Living Light",
+      "description": "[Cleric]When this unit enters the battlefield, you may choose another of your units. Select it and then heal it completely if it took damage, else deal 10 damage to it and grant it Haste. You may sacrifice this unit to grant another of your units Haste.",
+      "color": "red",
+      "level": "1",
+      "card_type": "unit",
+      "cost": "2",
+      "throwaway_cost": "2",
+      "space": "1",
+      "strength": "10",
+      "health": "20"
+    },
+    {
+      "ID": "Rx000e",
+      "name": "Guidance Dog",
+      "description": "[Animal]Once per turn, if this unit has Haste, you may discard your entire Hand to draw 2 cards.",
+      "color": "red",
+      "level": "1",
+      "card_type": "unit",
+      "cost": "3",
+      "throwaway_cost": "2",
+      "space": "1",
+      "strength": "50",
+      "health": "40"
+    },
+    {
+      "ID": "Rx000f",
+      "name": "Pyro-Maniac",
+      "description": "[Magician]Once per turn, when your leader attacks, give every allied unit with Haste (+10/+10) until the end of this turn.",
+      "color": "red",
+      "level": "2",
+      "card_type": "unit",
+      "cost": "3",
+      "throwaway_cost": "2",
+      "space": "1",
+      "strength": "60",
+      "health": "60"
+    },
+    {
+      "ID": "Rx0010",
+      "name": "Jadetwirl Revolutionary",
+      "description": "[Architect]Once per turn, when a token would be created by one of your cards, you may create two of those tokens instead.",
+      "color": "red",
+      "level": "2",
+      "card_type": "unit",
+      "cost": "4",
+      "throwaway_cost": "3",
+      "space": "1",
+      "strength": "40",
+      "health": "50"
+    },
+    {
+      "ID": "Rx0011",
+      "name": "Cirrane Underground Fighter",
+      "description": "[Fighter]Once per turn, if this is the only unit attacking this turn, give this unit (+10/+10) for every unit and leader with Haste you control until the end of your turn.",
+      "color": "red",
+      "level": "2",
+      "card_type": "unit",
+      "cost": "4",
+      "throwaway_cost": "2",
+      "space": "1",
+      "strength": "70",
+      "health": "50"
+    },
+    {
+      "ID": "Rx0012",
+      "name": "Nimble Squirrel",
+      "description": "[Animal]Flash. If this unit is flash summoned: You may select an enemy unit. If the selected unit attacks this turn, the damage it deals is dealt to this card instead.",
+      "color": "red",
+      "level": "2",
+      "card_type": "unit",
+      "cost": "4",
+      "throwaway_cost": "3",
+      "space": "1",
+      "strength": "30",
+      "health": "30"
+    },
+    {
+      "ID": "Rx0013",
+      "name": "Lance and Spear - TAG TEAM",
+      "description": "[Fighter/TAG TEAM]If this unit is summoned to occupy a vertical space: It gains Haste. If this unit is summoned to occupy a horizontal space: This unit gains (+0/+40).",
+      "color": "red",
+      "level": "2",
+      "card_type": "unit",
+      "cost": "5",
+      "throwaway_cost": "4",
+      "space": "2",
+      "strength": "60",
+      "health": "50"
+    },
+    {
+      "ID": "Rx0014",
+      "name": "Blaze Constructor",
+      "description": "[Architect]Once per turn, you may sacrifice an allied unit. If you do, select an enemy unit and deal damage equal to the sacrificed unit's remaining HP to it.",
+      "color": "red",
+      "level": "2",
+      "card_type": "unit",
+      "cost": "5",
+      "throwaway_cost": "4",
+      "space": "1",
+      "strength": "40",
+      "health": "70"
+    },
+    {
+      "ID": "Rx0015",
+      "name": "Meteor Mage",
+      "description": "[Magician]Once per turn, if this unit has Haste and target opponent has Life Cloth left, you may sacrifice this unit to deal 10 damage to target opponent.",
+      "color": "red",
+      "level": "3",
+      "card_type": "unit",
+      "cost": "6",
+      "throwaway_cost": "5",
+      "space": "2",
+      "strength": "70",
+      "health": "60"
+    },
+    {
+      "ID": "Rx0016",
+      "name": "Rebuilder of Ruins",
+      "description": "[Architect]Once per turn, if this unit has Haste, you may choose a number between 1 and 3 and select an opponent. Target opponent and you discard the selected amount of cards. For each card with cost 4 or less, deal 3 damage to every unit.",
+      "color": "red",
+      "level": "3",
+      "card_type": "unit",
+      "cost": "7",
+      "throwaway_cost": "5",
+      "space": "2",
+      "strength": "40",
+      "health": "40"
+    },
+    {
+      "ID": "Rx0017",
+      "name": "Hurry up!",
+      "description": "Target allied unit gains Haste until the end of this turn. If it has been summoned this turn, reduce its Waiting Time to 0.",
+      "color": "red",
+      "level": "1",
+      "card_type": "magic",
+      "cost": "2",
+      "throwaway_cost": "1",
+      "spell_speed": "2"
+    },
+    {
+      "ID": "Rx0018",
+      "name": "Metal Enhancement Mk I",
+      "description": "Equip an allied unit. It gains (+20/+20). On your next Standby Phase, you may sacrifice the equipped unit and if you do, you may add a 'Metal Enhancement Mk II' from your Deck to your Hand.",
+      "color": "red",
+      "level": "1",
+      "card_type": "magic",
+      "cost": "3",
+      "throwaway_cost": "2",
+      "spell_speed": "0"
+    },
+    {
+      "ID": "Rx0019",
+      "name": "Metal Enhancement Mk II",
+      "description": "Equip an allied unit. It gains (+30/+30). On your next Standby Phase, you may sacrifice the equipped unit and if you do, select an enemy unit and deal damage equal to the equipped unit's STR to it.",
+      "color": "red",
+      "level": "2",
+      "card_type": "magic",
+      "cost": "4",
+      "throwaway_cost": "2",
+      "spell_speed": "0"
+    },
+    {
+      "ID": "Rx001a",
+      "name": "The final battle",
+      "description": "Double all of your unit's and leader's STR until the end of your turn. At the end of your turn, destroy all allied units, then you take damage equal to the amount of units destroyed by this effect x 10.",
+      "color": "red",
+      "level": "3",
+      "card_type": "magic",
+      "cost": "6",
+      "throwaway_cost": "4",
+      "spell_speed": "0"
+    },
+    {
+      "ID": "Rx001b",
+      "name": "Meteor Shower",
+      "description": "Select all units individually and if you do, destroy the selected units.",
+      "color": "red",
+      "level": "3",
+      "card_type": "magic",
+      "cost": "7",
+      "throwaway_cost": "5",
+      "spell_speed": "0"
+    },
+    {
+      "ID": "Rx001c",
+      "name": "Unfair Advantage",
+      "description": "Select an attacking allied unit which is blocked by an enemy unit. Destroy the blocking unit. The attack is calculated as if there was no blocker and ignores your opponent's Life Cloth. (Your opponent takes direct damage.)",
+      "color": "red",
+      "level": "4",
+      "card_type": "magic",
+      "cost": "8",
+      "throwaway_cost": "5",
+      "spell_speed": "2"
+    },
+    {
+      "ID": "Rx001d",
+      "name": "Final Explosion",
+      "description": "Select a unit. Deal damage to all units equal to the selected unit's STR.",
+      "color": "red",
+      "card_type": "magic",
+      "spell_speed": "0",
+      "is_life_cloth": "1"
+    },
+    {
+      "ID": "Rx001e",
+      "name": "Godlike Speed",
+      "description": "Reduce a unit's Waiting Time to 0.",
+      "color": "red",
+      "card_type": "magic",
+      "spell_speed": "2",
+      "is_life_cloth": "1"
+    },
+    {
+      "ID": "Rx001f",
+      "name": "Mark of Destruction",
+      "description": "The next time target opponent takes damage, double that damage.",
+      "color": "red",
+      "card_type": "magic",
+      "spell_speed": "2",
+      "is_life_cloth": "1"
+    },
+    {
+      "ID": "Rx0020",
+      "name": "Giant Bomb",
+      "description": "[Structure]Immovable. When this unit leaves the battlefield, select, then destroy all enemy units.",
+      "color": "red",
+      "card_type": "unit",
+      "space": "3",
+      "strength": "20",
+      "health": "300",
+      "is_life_cloth": "1"
+    },
+    {
+      "ID": "Rx0021",
+      "name": "Two-Headed Dragon",
+      "description": "[Dragon]Once per turn: If you control another unit, you can select it. This unit's STR becomes the selected unit's STR until the end of this turn, also this unit has to attack this turn, if possible.",
+      "color": "red",
+      "card_type": "unit",
+      "space": "2",
+      "strength": "0",
+      "health": "100",
+      "is_life_cloth": "1"
+    },
+    {
+      "ID": "Rx0022",
+      "name": "Booster Engineer",
+      "description": "[Architect]When this unit enters the battlefield: The next time a unit is summoned this turn, grant it Haste.",
+      "color": "red",
+      "level": "1",
+      "card_type": "unit",
+      "cost": "1",
+      "throwaway_cost": "1",
+      "space": "1",
+      "strength": "10",
+      "health": "10"
+    },
+    {
+      "ID": "Rx0023",
+      "name": "Rocket Engineer",
+      "description": "[Architect]When this unit enters the battlefield: The next time an allied unit is summoned this turn, grant it Haste.",
+      "color": "red",
+      "level": "1",
+      "card_type": "unit",
+      "cost": "3",
+      "throwaway_cost": "2",
+      "space": "1",
+      "strength": "20",
+      "health": "30"
+    },
+    {
+      "ID": "Rx0024",
+      "name": "<New Card>",
+      "color": "red"
+    },
+    {
+      "ID": "Rx0025",
+      "name": "<New Card>",
+      "color": "red"
+    },
+    {
+      "ID": "Rx0026",
+      "name": "<New Card>",
+      "color": "red"
+    },
+    {
+      "ID": "Px0000",
+      "name": "Lady Spark",
+      "description": "[Leader/Cosmos/Lvl 1]",
+      "passive_abilities": [
+        "Once per turn, if one of your effects increases the Waiting Time of a unit, you may draw a card."
+      ],
+      "leader_attacks": [
+        {
+          "loyalty_cost": "1",
+          "mana_cost": "0",
+          "strength": "20",
+          "name": "Small Spark",
+          "description": "If one of your effects increased the Waiting Time of a unit this turn, increase this attack's STR by 10 until the end of this turn."
+        },
+        {
+          "loyalty_cost": "1",
+          "mana_cost": "2",
+          "strength": "15",
+          "name": "Paralyzing Glare",
+          "description": "Select a unit an opponent controls. Increase it's Waiting Time by 1, but it can still block (even if its' Waiting Time is increased again)."
+        }
+      ],
+      "color": "purple",
+      "level": "1",
+      "card_type": "leader",
+      "health": "120",
+      "life_cloth_thresholds": [
+        "15",
+        "30",
+        "50",
+        "75",
+        "90"
+      ]
+    },
+    {
+      "ID": "Px0001",
+      "name": "Lady Star",
+      "description": "[Leader/Cosmos/Lvl 2]",
+      "passive_abilities": [
+        "Once per turn, if one of your effects increases the Waiting Time of a unit, you may draw a card and if you do, select an enemy unit and increase its Waiting Time by 1."
+      ],
+      "leader_attacks": [
+        {
+          "loyalty_cost": "1",
+          "mana_cost": "0",
+          "strength": "35",
+          "name": "Star Strike",
+          "description": "If one of your effects increased the Waiting Time of a unit this turn, increase this attack's STR by 10 until the end of this turn."
+        },
+        {
+          "loyalty_cost": "1",
+          "mana_cost": "3",
+          "strength": "20",
+          "name": "Paralyzing Glare",
+          "description": "Select a unit an opponent controls. Increase it's Waiting Time by 1, but it can still block (even if its' Waiting Time is increased again)."
+        }
+      ],
+      "level": "2",
+      "card_type": "leader",
+      "cost": "1",
+      "health": "150",
+      "life_cloth_thresholds": [
+        "15",
+        "40",
+        "80",
+        "100",
+        "125"
+      ]
+    },
+    {
+      "ID": "Px0002",
+      "name": "Lady Galaxy",
+      "description": "[Leader/Cosmos/Lvl 3]",
+      "passive_abilities": [
+        "Once per turn, if one of your effects increases the Waiting Time of a unit, you may draw a card and if you do, select an enemy unit and double its Waiting Time."
+      ],
+      "leader_attacks": [
+        {
+          "loyalty_cost": "1",
+          "mana_cost": "0",
+          "strength": "50",
+          "name": "Galaxy Strike",
+          "description": "If one of your effects increased the Waiting Time of a unit this turn, increase this attack's STR by 10 until the end of this turn."
+        },
+        {
+          "loyalty_cost": "1",
+          "mana_cost": "3",
+          "strength": "20",
+          "name": "Paralyzing Glare",
+          "description": "Select a unit an opponent controls. Increase it's Waiting Time by 1, but it can still block (even if its' Waiting Time is increased again)."
+        }
+      ],
+      "level": "3",
+      "card_type": "leader",
+      "cost": "2",
+      "health": "175",
+      "life_cloth_thresholds": [
+        "15",
+        "40",
+        "90",
+        "110",
+        "140"
+      ]
+    },
+    {
+      "ID": "Px0003",
+      "name": "Lady Universe",
+      "description": "[Leader/Cosmos/Legend/Lvl 4]When this unit enters the battlefield, draw cards equal to the combined Waiting Time of all units. ",
+      "passive_abilities": [
+        "Once per turn, if one of your effects increases the Waiting Time of a unit, its owner may draw cards equal to its Waiting Time."
+      ],
+      "leader_attacks": [
+        {
+          "loyalty_cost": "1",
+          "mana_cost": "5",
+          "strength": "50",
+          "name": "Universe Strike",
+          "description": "Increase this attack's strength by the combined Waiting Time of all units x10."
+        },
+        {
+          "loyalty_cost": "1",
+          "mana_cost": "3",
+          "strength": "20",
+          "name": "Paralyzing Glare",
+          "description": "Select a unit an opponent controls. Increase it's Waiting Time by 1, but it can still block (even if its' Waiting Time is increased again)."
+        }
+      ],
+      "level": "4",
+      "card_type": "leader",
+      "cost": "3",
+      "health": "200",
+      "life_cloth_thresholds": [
+        "15",
+        "40",
+        "90",
+        "125",
+        "180"
+      ]
+    },
+    {
+      "ID": "Px0004",
+      "name": "Jolly Cosmonaut",
+      "description": "[Cleric]When this unit enters the battlefield, select a unit and increase it's Waiting Time by 1.",
+      "color": "purple",
+      "level": "1",
+      "card_type": "unit",
+      "cost": "2",
+      "throwaway_cost": "3",
+      "space": "1",
+      "strength": "20",
+      "health": "10"
+    },
+    {
+      "ID": "Px0005",
+      "name": "Telescopist",
+      "description": "[Cleric]Once per turn, if you draw an additional card, you may increase an allied unit's Waiting Time by 2. If you do, you may search your Deck for a purple spell with cost 3 or less.",
+      "color": "purple",
+      "level": "1",
+      "card_type": "unit",
+      "cost": "1",
+      "throwaway_cost": "2",
+      "space": "1",
+      "strength": "10",
+      "health": "30"
+    },
+    {
+      "ID": "Px0006",
+      "name": "Snow Owl",
+      "description": "[Animal]Once per turn, if this unit has no Waiting Time, you may look at the top card of your Deck.",
+      "color": "purple",
+      "level": "1",
+      "card_type": "unit",
+      "cost": "2",
+      "throwaway_cost": "2",
+      "space": "1",
+      "strength": "20",
+      "health": "30"
+    },
+    {
+      "ID": "Px0007",
+      "name": "Aurora Priestress",
+      "description": "[Cleric]When this unit enters the battlefield, you may select a unit and if you do, heal allied units equal to the selected unit's Waiting Time.",
+      "color": "purple",
+      "level": "1",
+      "card_type": "unit",
+      "cost": "3",
+      "throwaway_cost": "2",
+      "space": "1",
+      "strength": "20",
+      "health": "30"
+    },
+    {
+      "ID": "Px0008",
+      "name": "Mana Gatherer",
+      "description": "[Cleric]Every time you draw one or more additional cards, increase your Floating Mana by 1.",
+      "color": "purple",
+      "level": "1",
+      "card_type": "unit",
+      "cost": "3",
+      "throwaway_cost": "2",
+      "space": "1",
+      "strength": "10",
+      "health": "40"
+    },
+    {
+      "ID": "Px0009",
+      "name": "Dream Crawler",
+      "description": "[Dream Creature]When this unit enters the battlefield, select an allied unit. Increase the selected unit's Waiting Time by 3. When the selected unit's Waiting Time is reduced to 0, destroy this unit.",
+      "color": "purple",
+      "level": "1",
+      "card_type": "unit",
+      "cost": "3",
+      "throwaway_cost": "0",
+      "space": "1",
+      "strength": "40",
+      "health": "40"
+    },
+    {
+      "ID": "Px000a",
+      "name": "Snow Elemental",
+      "description": "[Elemental]When this card enters the battlefield, if you control a purple Field Spell: You may select an enemy unit and if you do, increase its Waiting Time by 1.",
+      "color": "purple",
+      "level": "2",
+      "card_type": "unit",
+      "cost": "4",
+      "throwaway_cost": "2",
+      "space": "1",
+      "strength": "40",
+      "health": "40"
+    },
+    {
+      "ID": "Px000b",
+      "name": "Banishment Doll",
+      "description": "[Doll]Flash. When this cards enters the battlefield: You may select a card and if you do, exile it until its owner's next Standby Phase.",
+      "color": "purple",
+      "level": "2",
+      "card_type": "unit",
+      "cost": "4",
+      "throwaway_cost": "3",
+      "space": "1",
+      "strength": "10",
+      "health": "10"
+    },
+    {
+      "ID": "Px000c",
+      "name": "Guardian of Dreams",
+      "description": "[Cleric]Dream Creatures you control cannot be destroyed by their own effects.",
+      "color": "purple",
+      "level": "2",
+      "card_type": "unit",
+      "cost": "4",
+      "throwaway_cost": "2",
+      "space": "1",
+      "strength": "30",
+      "health": "30"
+    },
+    {
+      "ID": "Px000d",
+      "name": "Dream Hands",
+      "description": "[Dream Creature]When this unit enters the battlefield, select an allied unit. Increase the selected unit's Waiting Time by 3. When the selected unit's Waiting Time is reduced to 0, destroy this unit. Once per turn, when this unit deals combat damage to a player: You may sacrifice this unit and if you do, select a unit and increase its Waiting Time by 2.",
+      "color": "purple",
+      "level": "2",
+      "card_type": "unit",
+      "cost": "5",
+      "throwaway_cost": "0",
+      "space": "2",
+      "strength": "60",
+      "health": "60"
+    },
+    {
+      "ID": "Px000e",
+      "name": "Dream Accelerator",
+      "description": "[Dream Creature]When this unit enters the battlefield, select an allied unit. Increase the selected unit's Waiting Time by 2. When the selected unit's Waiting Time is reduced to 0, destroy this unit. Once per turn, if this unit has no Waiting Time: You may select an allied unit and decrease its Waiting Time by 1.",
+      "color": "purple",
+      "level": "2",
+      "card_type": "unit",
+      "cost": "5",
+      "throwaway_cost": "0",
+      "space": "1",
+      "strength": "50",
+      "health": "50"
+    },
+    {
+      "ID": "Px000f",
+      "name": "Higher Mind Hierophant",
+      "description": "[Cleric]Once per turn, when one of your card effects increase a unit's Waiting Time: You may half the Waiting Time added by the effect.",
+      "color": "purple",
+      "level": "2",
+      "card_type": "unit",
+      "cost": "5",
+      "throwaway_cost": "4",
+      "space": "1",
+      "strength": "40",
+      "health": "70"
+    },
+    {
+      "ID": "Px0010",
+      "name": "Dream Giant",
+      "description": "[Dream Creature]When this unit enters the battlefield, select an allied unit. Increase the selected unit's Waiting Time by 3. When the selected unit's Waiting Time is reduced to 0, destroy this unit.",
+      "color": "purple",
+      "level": "3",
+      "card_type": "unit",
+      "cost": "6",
+      "throwaway_cost": "0",
+      "space": "2",
+      "strength": "110",
+      "health": "110"
+    },
+    {
+      "ID": "Px0011",
+      "name": "Calm Ghost and Time Guardian - TAG TEAM",
+      "description": "[Ghost/Cleric/TAG TEAM]If this unit is summoned to occupy a vertical space: You may select an enemy unit with an active Waiting Time and if you do, deal damage to it equal to this unit's STR. If this unit is summoned to occupy a horizontal space: Increase the Waiting Time of all enemy units by 2.",
+      "color": "purple",
+      "level": "3",
+      "card_type": "unit",
+      "cost": "6",
+      "throwaway_cost": "5",
+      "space": "2",
+      "strength": "80",
+      "health": "100"
+    },
+    {
+      "ID": "Px0012",
+      "name": "Nightmare Scarecrow",
+      "description": "[Fear]When this unit enters the battlefield, if you control a Dream Creature: You may sacrifice one of your Dream Creatures and if you do, increase the Waiting Time of all enemy units by 2.",
+      "color": "purple",
+      "level": "3",
+      "card_type": "unit",
+      "cost": "7",
+      "throwaway_cost": "-4",
+      "space": "2",
+      "strength": "130",
+      "health": "100"
+    },
+    {
+      "ID": "Px0013",
+      "name": "Nightmare Pharynx",
+      "description": "[Fear]When this unit enters the battlefield, if you control a Dream Creature: You may sacrifice one of your Dream Creatures and if you do, double this unit's STR.",
+      "color": "purple",
+      "level": "3",
+      "card_type": "unit",
+      "cost": "7",
+      "throwaway_cost": "-3",
+      "space": "2",
+      "strength": "80",
+      "health": "80"
+    },
+    {
+      "ID": "Px0014",
+      "name": "Nightmare Ultimatum",
+      "description": "[Fear/Legend]When this unit enters the battlefield, if you control a Dream Creature and a Fear: You may sacrifice one of your Dream Creatures and one of your other Fears and if you do, destroy all enemy units with an active Waiting Time. Then, if you activated this effect, increase all enemy units Waiting Time by 3.",
+      "color": "purple",
+      "level": "3",
+      "card_type": "unit",
+      "cost": "9",
+      "throwaway_cost": "-10",
+      "space": "3",
+      "strength": "180",
+      "health": "190"
+    },
+    {
+      "ID": "Px0015",
+      "name": "Metal Chains",
+      "description": "Select a unit and increase its Waiting Time by 1.",
+      "color": "purple",
+      "level": "1",
+      "card_type": "magic",
+      "cost": "2",
+      "throwaway_cost": "2",
+      "spell_speed": "2"
+    },
+    {
+      "ID": "Px0016",
+      "name": "Dream Link",
+      "description": "Give all units without an active Waiting Time (+X/+X), where X is the amount of units with an active Waiting Time until the end of this turn, x10.",
+      "color": "purple",
+      "level": "",
+      "card_type": "magic",
+      "cost": "2",
+      "throwaway_cost": "2",
+      "spell_speed": "2"
+    },
+    {
+      "ID": "Px0017",
+      "name": "Hide and Seek",
+      "description": "Select an allied unit and an enemy unit and banish them until the next Extension Phase.",
+      "color": "purple",
+      "level": "1",
+      "card_type": "magic",
+      "cost": "3",
+      "throwaway_cost": "2",
+      "spell_speed": "2"
+    },
+    {
+      "ID": "Px0018",
+      "name": "Nap Time",
+      "description": "Select an allied unit and increase its Waiting Time by 2. If you do, you may search your Deck for up to 1 Dream Creature and add it to your Hand.",
+      "color": "purple",
+      "level": "2",
+      "card_type": "magic",
+      "cost": "4",
+      "throwaway_cost": "3",
+      "spell_speed": "2"
+    },
+    {
+      "ID": "Px0019",
+      "name": "Endless Sky",
+      "description": "[Field]Whenever a unit enters the battlefield, you may pay 1 and if you do, increase its Waiting Time by 1. Once per turn, when one of your effects increases the Waiting Time of a unit, you may pay 2 and if you do, you may search your Deck for up to 1 purple Magic with a level equal or less the level of your Leader and add it to your Hand.",
+      "color": "purple",
+      "level": "2",
+      "card_type": "magic",
+      "cost": "5",
+      "throwaway_cost": "4",
+      "spell_speed": "0"
+    },
+    {
+      "ID": "Px001a",
+      "name": "Dream Transfer",
+      "description": "Select a unit and reduce its Waiting Time to 0. If you do, you may select an enemy unit and if you do, increase the selected unit's Waiting Time by the amount of Waiting Time removed by this effect.",
+      "color": "purple",
+      "level": "3",
+      "card_type": "magic",
+      "cost": "6",
+      "throwaway_cost": "4",
+      "spell_speed": "0"
+    },
+    {
+      "ID": "Px001b",
+      "name": "Sleeping Potion",
+      "description": "Select a unit. Increase its Waiting Time by 2. If it was an attacking unit, it is no longer attacking. If it was a blocking unit, it is no longer blocking.",
+      "color": "purple",
+      "level": "3",
+      "card_type": "magic",
+      "cost": "7",
+      "throwaway_cost": "6",
+      "spell_speed": "2"
+    },
+    {
+      "ID": "Px001c",
+      "name": "Dream Ritual",
+      "description": "Increase the Waiting Time of all units by 2. Then, you may summon a purple unit from your Deck with cost equal or less the amount of units with an active Waiting Time.",
+      "color": "purple",
+      "level": "4",
+      "card_type": "magic",
+      "cost": "8",
+      "throwaway_cost": "6",
+      "spell_speed": "2"
+    },
+    {
+      "ID": "Px001d",
+      "name": "The Other Side",
+      "description": "Until the end of this turn, play with the top card of your deck revealed. You may play the revealed card by paying its' cost, -1.",
+      "color": "purple",
+      "card_type": "magic",
+      "spell_speed": "0",
+      "is_life_cloth": "1"
+    },
+    {
+      "ID": "Px001e",
+      "name": "Galaxy Discovery",
+      "description": "Search your deck for purple cards up to the number of units with an active Waiting Time, with cost up to the combined half of Waiting Time of allied units.",
+      "color": "purple",
+      "card_type": "magic",
+      "spell_speed": "0",
+      "is_life_cloth": "1"
+    },
+    {
+      "ID": "Px001f",
+      "name": "Mark of Time",
+      "description": "The next time one of target opponent unit's Waiting Time being increased, double that Waiting Time.",
+      "color": "purple",
+      "card_type": "magic",
+      "spell_speed": "3",
+      "is_life_cloth": "1"
+    },
+    {
+      "ID": "Px0020",
+      "name": "Dream Palace",
+      "description": "[Field]As an additional cost, destroy your current Field Spell (If you don't have a Field Spell active, you cannot play this card). Dream Creatures you control deal piercing damage.",
+      "color": "purple",
+      "card_type": "magic",
+      "spell_speed": "0",
+      "is_life_cloth": "1"
+    },
+    {
+      "ID": "Px0021",
+      "name": "Parallel World Hooded Crow",
+      "description": "[Animal]As long as this unit is on the battlefield, every player draws cards from the bottom of their deck instead.",
+      "color": "purple",
+      "card_type": "unit",
+      "space": "1",
+      "strength": "30",
+      "health": "40",
+      "is_life_cloth": "1"
+    },
+    {
+      "ID": "Gx0000",
+      "name": "Granor, Flutist of the Trees",
+      "description": "[Leader/Faun/Lvl 1]Instead of removing Floating Mana in your Mana Phase, add 1 for every 2 of it to your Mana Pool.",
+      "color": "green",
+      "level": "1",
+      "card_type": "leader",
+      "strength": "1"
+    },
+    {
+      "ID": "Gx0001",
+      "name": "Granor, Flutist of the Forest",
+      "description": "[Leader/Faun/Lvl 2]Instead of removing Floating Mana in your Mana Phase, add 1 for every 2 of it to your Mana Pool. When this card enters the battlefield: Add 1 Mana to your Mana Pool.",
+      "level": "2",
+      "card_type": "leader",
+      "cost": "1",
+      "strength": "3"
+    },
+    {
+      "ID": "Gx0002",
+      "name": "Granor, Tree's Violin",
+      "description": "[Leader/Faun/Lvl 3]Instead of removing Floating Mana in your Mana Phase, add 1 for every 2 of it to your Mana Pool. Every time your opponent uses Mana, generate 1 Floating Mana. When this card enters the battlefield: Add 2 Mana to your Mana Pool.",
+      "level": "3",
+      "card_type": "leader",
+      "cost": "2",
+      "strength": "7"
+    },
+    {
+      "ID": "Gx0003",
+      "name": "Granor, Forest's Orchestra",
+      "description": "[Leader/Faun/Legend/Lvl 4]Instead of removing Floating Mana in your Mana Phase, add it to your Mana Pool. Every time your opponent uses Mana, generate 1 Floating Mana. When this card enters the battlefield: Add 3 Mana to your Mana Pool.",
+      "level": "4",
+      "card_type": "leader",
+      "cost": "3",
+      "strength": "10"
+    },
+    {
+      "ID": "Gx0004",
+      "name": "Majestic Ivy",
+      "description": "[Plant]Once per turn, you may pay 8 and if you do, gain 1 Loyalty.",
+      "color": "green",
+      "level": "1",
+      "card_type": "unit",
+      "cost": "2",
+      "throwaway_cost": "3",
+      "space": "1",
+      "strength": "1",
+      "health": "2"
+    },
+    {
+      "ID": "Gx0005",
+      "name": "Overgrown Tendrils",
+      "description": "[Plant]Once per turn, during your Standby Phase: You may extend this unit's space by 1 and if you do, draw a card and gain 1 Floating Mana.",
+      "color": "green",
+      "level": "1",
+      "card_type": "unit",
+      "cost": "2",
+      "throwaway_cost": "2",
+      "space": "1",
+      "strength": "1",
+      "health": "2"
+    },
+    {
+      "ID": "Gx0006",
+      "name": "Tinybug",
+      "description": "[Insect]When this unit enters the battlefield, if you control a Plant: This unit becomes immune to card effects until your next Standby Phase.",
+      "color": "green",
+      "level": "1",
+      "card_type": "unit",
+      "cost": "2",
+      "throwaway_cost": "1",
+      "space": "1",
+      "strength": "1",
+      "health": "1"
+    },
+    {
+      "ID": "Gx0007",
+      "name": "Pure Maiden",
+      "description": "[Erdu]Once per turn, you may sacrifice this unit and if you do, gain 2 Floating Mana, also, the turn you activate this effect, you may only cast green cards.",
+      "color": "green",
+      "level": "1",
+      "card_type": "unit",
+      "cost": "2",
+      "throwaway_cost": "2",
+      "space": "1",
+      "strength": "2",
+      "health": "3"
+    },
+    {
+      "ID": "Gx0008",
+      "name": "Tiger Baby",
+      "description": "[Animal]First Strike. Once per turn, if your Leader is Lvl 3 or higher: You may sacrifice this unit and pay 4 and if you do, summon a 'Queen's Tiger' from your Hand or Deck.",
+      "color": "green",
+      "level": "1",
+      "card_type": "unit",
+      "cost": "3",
+      "throwaway_cost": "1",
+      "space": "1",
+      "strength": "4",
+      "health": "4"
+    },
+    {
+      "ID": "Gx0009",
+      "name": "Archer's Successor",
+      "description": "[Erdu/Archer]When this unit enters the battlefield: You may select an enemy unit and if you do, deal damage to it equal to the amount of your current Mana.",
+      "color": "green",
+      "level": "1",
+      "card_type": "unit",
+      "cost": "3",
+      "throwaway_cost": "2",
+      "space": "1",
+      "strength": "5",
+      "health": "2"
+    },
+    {
+      "ID": "Gx000a",
+      "name": "Benevolent Veteran",
+      "description": "[Erdu]When this unit enters the battlefield, if you have Floating Mana: You may draw a card.",
+      "color": "green",
+      "level": "2",
+      "card_type": "unit",
+      "cost": "4",
+      "throwaway_cost": "3",
+      "space": "1",
+      "strength": "5",
+      "health": "6"
+    },
+    {
+      "ID": "Gx000b",
+      "name": "Mother Sheep",
+      "description": "[Animal]Once per turn, if you gain Mana due to an effect: You may create a (1/1) 'Little Lamb' token with 'You may sacrifice this unit and if you do, gain 1 Floating Mana.'",
+      "color": "green",
+      "level": "2",
+      "card_type": "unit",
+      "cost": "4",
+      "throwaway_cost": "3",
+      "space": "1",
+      "strength": "3",
+      "health": "8"
+    },
+    {
+      "ID": "Gx000c",
+      "name": "Fairy Guide",
+      "description": "[Fairy]When this unit enters the battlefield: You may pay 2 and select an allied unit and if you do, sacrifice it to summon a 'Fairy Guardian' from your Hand or Deck.",
+      "color": "green",
+      "level": "2",
+      "card_type": "unit",
+      "cost": "4",
+      "throwaway_cost": "4",
+      "space": "1",
+      "strength": "4",
+      "health": "6"
+    },
+    {
+      "ID": "Gx000d",
+      "name": "Fairy Guardian",
+      "description": "[Golem]When this unit enters the battlefield: It gains STR equal to the amount of your Mana.",
+      "color": "green",
+      "level": "2",
+      "card_type": "unit",
+      "cost": "5",
+      "throwaway_cost": "5",
+      "space": "2",
+      "strength": "1",
+      "health": "5"
+    },
+    {
+      "ID": "Gx000e",
+      "name": "Pit Plant",
+      "description": "[Plant]When this unit blocks another unit and survives: You may pay 2 and if you do, destroy the attacking unit.",
+      "color": "green",
+      "level": "2",
+      "card_type": "unit",
+      "cost": "5",
+      "throwaway_cost": "5",
+      "space": "2",
+      "strength": "1",
+      "health": "5"
+    },
+    {
+      "ID": "Gx000f",
+      "name": "Flora and Fauna - TAG TEAM",
+      "description": "[Dryad/TAG TEAM]If this unit is summoned to occupy a vertical space: Animals you control get First Strike. If this unit is summoned to occupy a horizontal space: Plants you control can not be targetted by enemy card effects.",
+      "color": "green",
+      "level": "2",
+      "card_type": "unit",
+      "cost": "5",
+      "throwaway_cost": "4",
+      "space": "2",
+      "strength": "6",
+      "health": "7"
+    },
+    {
+      "ID": "Gx0010",
+      "name": "Rift Maw",
+      "description": "[Golem]Once per turn, when this unit enters the battlefield: You may discard any number of cards from your Hand and if you do, draw that many cards.",
+      "color": "green",
+      "level": "3",
+      "card_type": "unit",
+      "cost": "6",
+      "throwaway_cost": "5",
+      "space": "2",
+      "strength": "6",
+      "health": "7"
+    },
+    {
+      "ID": "Gx0011",
+      "name": "Queen's Tiger",
+      "description": "[Animal]First Strike. Animals you control gain (+2/+2).",
+      "color": "green",
+      "level": "3",
+      "card_type": "unit",
+      "cost": "6",
+      "throwaway_cost": "3",
+      "space": "1",
+      "strength": "9",
+      "health": "5"
+    },
+    {
+      "ID": "Gx0012",
+      "name": "Walking Wall",
+      "description": "[Golem]This unit can block up to 3 attackers per turn.",
+      "color": "green",
+      "level": "3",
+      "card_type": "unit",
+      "cost": "7",
+      "throwaway_cost": "5",
+      "space": "3",
+      "strength": "4",
+      "health": "14"
+    },
+    {
+      "ID": "Gx0013",
+      "name": "Ascended Fairy",
+      "description": "[Fairy]As long as a Field Spell is active, units summoned due to other unit's effects cannot be targetted by enemy cards.",
+      "color": "green",
+      "level": "3",
+      "card_type": "unit",
+      "cost": "7",
+      "throwaway_cost": "3",
+      "space": "1",
+      "strength": "10",
+      "health": "12"
+    },
+    {
+      "ID": "Gx0014",
+      "name": "Giga Plant Saurus",
+      "description": "[Dinosaur/Golem/Legend]As an additional summoning cost, sacrifice creatures you control whose combined STR is greater or equal 15. When this card is summoned: Destroy all enemy creatures with Lvl 2 or less.",
+      "color": "green",
+      "level": "4",
+      "card_type": "unit",
+      "cost": "10",
+      "throwaway_cost": "5",
+      "space": "6",
+      "strength": "20",
+      "health": "20"
+    },
+    {
+      "ID": "Gx0015",
+      "name": "Rising Sun",
+      "description": "Create a (1/1) 'Sunflower' token with 'You may sacrifice this unit: Gain 1 Floating Mana.'",
+      "color": "green",
+      "level": "1",
+      "card_type": "magic",
+      "cost": "2",
+      "throwaway_cost": "2",
+      "spell_speed": "0"
+    },
+    {
+      "ID": "Gx0016",
+      "name": "Fertilizer",
+      "description": "Draw 1 card for every unit your opponent controls which has more STR than your unit with the highest STR. (If you don't control any units, you draw 1 card for every unit your opponent controls.)",
+      "color": "green",
+      "level": "1",
+      "card_type": "magic",
+      "cost": "2",
+      "throwaway_cost": "1",
+      "spell_speed": "2"
+    },
+    {
+      "ID": "Gx0017",
+      "name": "Vine Whip",
+      "description": "Deal X damage to an enemy unit, where X is the amount of Mana that player controls.",
+      "color": "green",
+      "level": "1",
+      "card_type": "magic",
+      "cost": "3",
+      "throwaway_cost": "1",
+      "spell_speed": "2"
+    },
+    {
+      "ID": "Gx0018",
+      "name": "Merciful Gift",
+      "description": "Your opponent creates two (0/3) 'Gifted Sheep' token with 'Has to block if possible. When this unit is defeated: Your opponent draws a card.'",
+      "color": "green",
+      "level": "2",
+      "card_type": "magic",
+      "cost": "4",
+      "throwaway_cost": "3",
+      "spell_speed": "2"
+    },
+    {
+      "ID": "Gx0019",
+      "name": "Love Connection",
+      "description": "Select an allied unit and an enemy unit. If one of them dies, the other one dies.",
+      "color": "green",
+      "level": "2",
+      "card_type": "magic",
+      "cost": "5",
+      "throwaway_cost": "4",
+      "spell_speed": "0"
+    },
+    {
+      "ID": "Gx001a",
+      "name": "Recycle Compost Heap",
+      "description": "[Field]Every time you banish a card from your Hand to gain Mana, you may create a (1/1) 'Sunflower' token with 'You may sacrifice this unit: Gain 1 Floating Mana.'.",
+      "color": "green",
+      "level": "3",
+      "card_type": "magic",
+      "cost": "6",
+      "throwaway_cost": "4",
+      "spell_speed": "0"
+    },
+    {
+      "ID": "Gx001b",
+      "name": "Mud Fight",
+      "description": "Fill your opponent's field with (0/1) 'Mud' tokens with 'Cannot attack or block. Cannot be affected by other card effects. You may pay 2 and if you do, destroy me.'",
+      "color": "green",
+      "level": "3",
+      "card_type": "magic",
+      "cost": "7",
+      "throwaway_cost": "5",
+      "spell_speed": "0"
+    },
+    {
+      "ID": "Gx001c",
+      "name": "Giga Stampede",
+      "description": "Transform as many of your units as possible into exact copies of your unit with the highest STR. At the end of your turn, transform all allied units into (1/1) 'Exhausted Unit' with 'Cannot attack or block.'",
+      "color": "green",
+      "level": "4",
+      "card_type": "magic",
+      "cost": "8",
+      "throwaway_cost": "5",
+      "spell_speed": "0"
+    },
+    {
+      "ID": "Gx001D",
+      "name": "<New Card>",
+      "color": "green"
+    },
+    {
+      "ID": "gx001e",
+      "name": "<New Card>",
+      "color": "green"
+    },
+    {
+      "ID": "Bx0000",
+      "name": "Posso, The Flash",
+      "description": "[Leader/Fighter/Lvl 1]Instead of levelling up this leader, you can only level up this leader after your opponent in their Leader Phase.",
+      "color": "blue",
+      "level": "1",
+      "card_type": "leader",
+      "strength": "1"
+    },
+    {
+      "ID": "Bx0001",
+      "name": "Posso, The Thunder",
+      "description": "[Leader/Fighter/Lvl 2]Instead of levelling up this leader, you can only level up this leader after your opponent in their Leader Phase. When this leader enters the battlefield: Deal 1 damage to every unit of this turn's player.",
+      "level": "2",
+      "card_type": "leader",
+      "cost": "1",
+      "strength": "3"
+    },
+    {
+      "ID": "Bx0002",
+      "name": "Posso, The Lightning",
+      "description": "[Leader/Fighter/Lvl 3]Instead of levelling up this leader, you can only level up this leader after your opponent in their Leader Phase. When this leader enters the battlefield: Deal 2 damage to every unit of this turn's player. Every time you summon a unit or a leader in your opponent's turn, give allied units (+1/+1).",
+      "level": "3",
+      "card_type": "leader",
+      "cost": "2",
+      "strength": "7"
+    },
+    {
+      "ID": "Bx0003",
+      "name": "Posso, The Storm",
+      "description": "[Leader/Fighter/Legend/Lvl 4]Every time you summon a unit or a leader in your opponent's turn, give allied units (+1/+1). Units with Flash cost 1 less to play.",
+      "level": "4",
+      "card_type": "leader",
+      "cost": "3",
+      "strength": "11"
+    },
+    {
+      "ID": "Bx0004",
+      "name": "Fast Combatant",
+      "description": "[Fighter]Flash. When this unit is summoned: This unit gains (+1/+0) times the amount of your Mana until the end of this turn.",
+      "color": "blue",
+      "level": "1",
+      "card_type": "unit",
+      "cost": "2",
+      "throwaway_cost": "2",
+      "space": "1",
+      "strength": "2",
+      "health": "2"
+    },
+    {
+      "ID": "Bx0005",
+      "name": "Argumentative Brawler",
+      "description": "[Fighter]When this unit is summoned: You may select an enemy unit and if you do, this unit and the selected unit deal damage to each other equal to their STR.",
+      "color": "blue",
+      "level": "1",
+      "card_type": "unit",
+      "cost": "2",
+      "throwaway_cost": "1",
+      "space": "1",
+      "strength": "3",
+      "health": "2"
+    },
+    {
+      "ID": "Bx0006",
+      "name": "Lightning Bender",
+      "description": "[Magician]Once per turn, if you summoned a unit in your opponent's last turn: You may select an enemy unit and if you do, deal 1 damage to it.",
+      "color": "blue",
+      "level": "1",
+      "card_type": "unit",
+      "cost": "2",
+      "throwaway_cost": "1",
+      "space": "1",
+      "strength": "3",
+      "health": "2"
+    },
+    {
+      "ID": "Bx0007",
+      "name": "Mermaid Sorceress",
+      "description": "[Magician/Cleric]Once per turn, if you summoned a unit in your opponent's last turn: You may select the unit and if you do, heal it.",
+      "color": "blue",
+      "level": "1",
+      "card_type": "unit",
+      "cost": "3",
+      "throwaway_cost": "3",
+      "space": "1",
+      "strength": "2",
+      "health": "5"
+    },
+    {
+      "ID": "Bx0008",
+      "name": "Spearfisherman",
+      "description": "[Fighter]Flash. If this card is summoned in an opponent's turn: You may draw a card.",
+      "color": "blue",
+      "level": "1",
+      "card_type": "unit",
+      "cost": "3",
+      "throwaway_cost": "2",
+      "space": "1",
+      "strength": "4",
+      "health": "3"
+    },
+    {
+      "ID": "Bx0009",
+      "name": "Deep Sea Angler",
+      "description": "[Fighter]Once per turn, when this unit is summoned: You may reveal the bottom card of your Deck. If it is a unit, you may grant it Flash and place it on top of your Deck.",
+      "color": "blue",
+      "level": "2",
+      "card_type": "unit",
+      "cost": "4",
+      "throwaway_cost": "3",
+      "space": "1",
+      "strength": "5",
+      "health": "6"
+    },
+    {
+      "ID": "Bx000a",
+      "name": "Storm Caller",
+      "description": "[Magician]Flash.",
+      "color": "blue",
+      "level": "2",
+      "card_type": "unit",
+      "cost": "4",
+      "throwaway_cost": "3",
+      "space": "1",
+      "strength": "4",
+      "health": "5"
+    },
+    {
+      "ID": "Bx000b",
+      "name": "Big Kamakuda Fish",
+      "description": "[Fish/Animal]Once per turn, you may let this card dive. (Flip this card. It can't attack or block and is a (0/1) 'Lurking Sea Creature' token with '(Quick)Pay the original card's Cost and if you do, flip this card. Then, trigger its surfacing effects.' When this card is surfacing: You may select an allied unit and if you do, heal it.",
+      "color": "blue",
+      "level": "2",
+      "card_type": "unit",
+      "cost": "4",
+      "throwaway_cost": "4",
+      "space": "2",
+      "strength": "5",
+      "health": "5"
+    },
+    {
+      "ID": "Bx000c",
+      "name": "Fat Erianda Fish",
+      "description": "[Fish/Animal]Once per turn, you may let this card dive. (Flip this card. It can't attack or block and is a (0/1) 'Lurking Sea Creature' token with '(Quick)Pay the original card's Cost and if you do, flip this card. Then, trigger its surfacing effects.') When this card is surfacing: This unit can block up to 2 attackers this turn.",
+      "color": "blue",
+      "level": "2",
+      "card_type": "unit",
+      "cost": "4",
+      "throwaway_cost": "3",
+      "space": "2",
+      "strength": "4",
+      "health": "6"
+    },
+    {
+      "ID": "Bx000d",
+      "name": "Energized Boxer",
+      "description": "[Fighter]Flash. If this card is flash summoned: You may discard any number of cards from your Hand, and if you do, you gain Floating Mana equal to the amount of cards discarded by this effect.",
+      "color": "blue",
+      "level": "2",
+      "card_type": "unit",
+      "cost": "5",
+      "throwaway_cost": "4",
+      "space": "1",
+      "strength": "6",
+      "health": "6"
+    },
+    {
+      "ID": "Bx000e",
+      "name": "Sniper Fish",
+      "description": "[Fish/Animal]Flash. If this card is flash summoned: This unit enters the field diving. (Flip this card. It can't attack or block and is a (0/1) 'Lurking Sea Creature' token with '(Quick)Pay the original card's Cost and if you do, flip this card. Then, trigger its surfacing effects.') When this card is surfacing: Deal 2 damage to up to 2 enemy units.",
+      "color": "blue",
+      "level": "2",
+      "card_type": "unit",
+      "cost": "5",
+      "throwaway_cost": "3",
+      "space": "2",
+      "strength": "7",
+      "health": "4"
+    },
+    {
+      "ID": "Bx000f",
+      "name": "Fishing Tawler's Captain",
+      "description": "[Fighter]When this unit enters the battlefield: You may search your Deck for a blue Fighter and add it to your hand.",
+      "color": "blue",
+      "level": "2",
+      "card_type": "unit",
+      "cost": "5",
+      "throwaway_cost": "4",
+      "space": "1",
+      "strength": "6",
+      "health": "8"
+    },
+    {
+      "ID": "Bx0010",
+      "name": "Harbor Champion",
+      "description": "[Fighter]When this unit defeats another unit: You may surface up to all of your units without paying their Cost.",
+      "color": "blue",
+      "level": "3",
+      "card_type": "unit",
+      "cost": "6",
+      "throwaway_cost": "4",
+      "space": "1",
+      "strength": "9",
+      "health": "9"
+    },
+    {
+      "ID": "Bx0011",
+      "name": "Dive Helper",
+      "description": "[Cleric]Once per turn, when one of your card effects destroys a unit: You may surface up to one of your units without paying their Cost.",
+      "color": "blue",
+      "level": "3",
+      "card_type": "unit",
+      "cost": "6",
+      "throwaway_cost": "4",
+      "space": "1",
+      "strength": "10",
+      "health": "8"
+    },
+    {
+      "ID": "Bx0012",
+      "name": "Thunder Berserk",
+      "description": "[Fighter]Flash. Once per turn, when this unit enters the battlefield: You may destroy one card this turn's player controls.",
+      "color": "blue",
+      "level": "3",
+      "card_type": "unit",
+      "cost": "7",
+      "throwaway_cost": "6",
+      "space": "1",
+      "strength": "11",
+      "health": "10"
+    },
+    {
+      "ID": "Bx0013",
+      "name": "Shy Fisherman and Tavern Fighter - TAG TEAM",
+      "description": "[Fighter/TAG TEAM]Flash. If this unit is summoned to occupy a vertical space: Reveal the top card of your Deck and if it is a unit, you may summon it diving without paying its Cost. If this unit is summoned to occupy a horizontal space: You draw cards up to the amount of blue units you control and gain Floating Mana equal to the amount of blue units you control.",
+      "color": "blue",
+      "level": "3",
+      "card_type": "unit",
+      "cost": "7",
+      "throwaway_cost": "4",
+      "space": "2",
+      "strength": "10",
+      "health": "9"
+    },
+    {
+      "ID": "Bx0014",
+      "name": "The Kraken",
+      "description": "[Animal/Legend]As an additional summoning cost, sacrifice 2 of your diving units. This unit enters the battlefield diving. When this unit surfaces: You may destroy every Field Spell and if you do, you may select enemy units up to the amount of Field Spells destroyed by this effect and destroy the selected units.",
+      "color": "blue",
+      "level": "4",
+      "card_type": "unit",
+      "cost": "8",
+      "throwaway_cost": "8",
+      "space": "4",
+      "strength": "15",
+      "health": "15"
+    },
+    {
+      "ID": "Bx0015",
+      "name": "Lurking in the Water",
+      "description": "(Quick)Select an allied Animal. If it is diving, surface it, else let it dive.",
+      "color": "blue",
+      "level": "1",
+      "card_type": "magic",
+      "cost": "2",
+      "throwaway_cost": "2",
+      "spell_speed": "2"
+    },
+    {
+      "ID": "Bx0016",
+      "name": "All Aboard!",
+      "description": "If you control a blue Fighter, you may add up to one blue Field Spell from your Deck to your Hand. You can not banish the added card for Mana.",
+      "color": "blue",
+      "level": "1",
+      "card_type": "magic",
+      "cost": "2",
+      "throwaway_cost": "1",
+      "spell_speed": "0"
+    },
+    {
+      "ID": "Bx0017",
+      "name": "The Element of Surprise",
+      "description": "Give blue units with Flash (+1/+2) until the end of this turn.",
+      "color": "blue",
+      "level": "1",
+      "card_type": "magic",
+      "cost": "3",
+      "throwaway_cost": "2",
+      "spell_speed": "1"
+    },
+    {
+      "ID": "Bx0018",
+      "name": "Shot into the blue",
+      "description": "Reveal the top card of your Deck. If it is a blue Magic, you may add it to your Hand, else put it into your Graveyard and select a unit you control and if you do, deal 3 damage to it.",
+      "color": "blue",
+      "level": "1",
+      "card_type": "magic",
+      "cost": "3",
+      "throwaway_cost": "2",
+      "spell_speed": "1"
+    },
+    {
+      "ID": "Bx0019",
+      "name": "Flood Wall",
+      "description": "Blue units with Flash may block this turn, even if they have up to 1 Waiting Time.",
+      "color": "blue",
+      "level": "2",
+      "card_type": "magic",
+      "cost": "4",
+      "throwaway_cost": "3",
+      "spell_speed": "2"
+    },
+    {
+      "ID": "Bx001a",
+      "name": "The Barge",
+      "description": "[Field]If you attacked in your last Round, units with Flash cost 2 less until your next Standby Phase.",
+      "color": "blue",
+      "level": "2",
+      "card_type": "magic",
+      "cost": "5",
+      "throwaway_cost": "5",
+      "spell_speed": "0"
+    },
+    {
+      "ID": "Bx001b",
+      "name": "Marine Sacrifice",
+      "description": "Sacrifice any amount of diving units you control, then draw cards and gain Floating Mana equal to the amount of units sacrificed by this effect.",
+      "color": "blue",
+      "level": "3",
+      "card_type": "magic",
+      "cost": "6",
+      "throwaway_cost": "5",
+      "spell_speed": "0"
+    },
+    {
+      "ID": "Bx001c",
+      "name": "Giant Flooding",
+      "description": "This turn, trigger surface abilities three times instead of once.",
+      "color": "blue",
+      "level": "3",
+      "card_type": "magic",
+      "cost": "7",
+      "throwaway_cost": "5",
+      "spell_speed": "0"
+    },
+    {
+      "ID": "Sx0000",
+      "name": "Pudoriel, Exiled Angel",
+      "description": "[Leader/Angel/Lvl 1]Once per turn, if a unit you control is sent to the Graveyard: Give all enemy units (-2/0) until the end of this turn.",
+      "color": "black",
+      "level": "1",
+      "card_type": "leader",
+      "strength": "1"
+    },
+    {
+      "ID": "Sx0001",
+      "name": "Pudoriel, Fallen Angel",
+      "description": "[Leader/Fallen/Angel/Lvl 2]Once per turn, if a unit you control is sent to the Graveyard: Your opponent discards 1 card. When a Fallen unit is sent to the Graveyard, you may summon a non-Fallen unit whose Lvl is equal or beneath this card's Lvl from your Graveyard by paying its Cost.",
+      "level": "2",
+      "card_type": "leader",
+      "cost": "1",
+      "strength": "4"
+    },
+    {
+      "ID": "Sx0002",
+      "name": "Pudoriel, Vindictive Angel",
+      "description": "[Leader/Fallen/Angel/Lvl 3]Once per turn, if a unit you control is sent to the Graveyard: Your opponent cannot spend Mana until the end of this turn (They can still spend Floating Mana, but only if it is their turn). When a Fallen unit is sent to the Graveyard, you may summon a non-Fallen unit whose Lvl is equal or beneath this card's Lvl from your Graveyard by paying its Cost.",
+      "level": "3",
+      "card_type": "leader",
+      "cost": "3",
+      "strength": "8"
+    },
+    {
+      "ID": "Sx0003",
+      "name": "Pudoriel, Angel of Shame",
+      "description": "[Leader/Fallen/Angel/Legend/Lvl 4]Once per turn, if a unit you control is sent to the Graveyard: Your opponent cannot spend Mana until the end of this turn. Summoning Units from your Graveyard reduces their Cost by 2. (This includes Gravewalker.) When a Fallen unit is sent to the Graveyard, you may summon a non-Fallen unit whose Lvl is equal or beneath this card's Lvl from your Graveyard by paying its Cost.",
+      "level": "4",
+      "card_type": "leader",
+      "cost": "4",
+      "strength": "11"
+    },
+    {
+      "ID": "Sx0004",
+      "name": "Infected Rat",
+      "description": "[Animal]When this unit enters the battlefield: Select up to one enemy unit and if you do, grant it (-1/0).",
+      "color": "black",
+      "level": "1",
+      "card_type": "unit",
+      "cost": "2",
+      "throwaway_cost": "2",
+      "space": "1",
+      "strength": "1",
+      "health": "2"
+    },
+    {
+      "ID": "Sx0005",
+      "name": "Undead Servant",
+      "description": "[Undead]Gravewalker 5. (You may cast this card from your graveyard for its Gravewalker Cost. You may only activate one Gravewalker per turn.) Once per turn, when this card is sent to the Graveyard: You may select up to one enemy unit and reduce its STR to 0 until the end of this turn.",
+      "color": "black",
+      "level": "1",
+      "card_type": "unit",
+      "cost": "2",
+      "throwaway_cost": "1",
+      "space": "1",
+      "strength": "2",
+      "health": "1"
+    },
+    {
+      "ID": "Sx0006",
+      "name": "Lost Angel",
+      "description": "[Angel]",
+      "color": "black",
+      "level": "1",
+      "card_type": "unit",
+      "cost": "2",
+      "throwaway_cost": "1",
+      "space": "1",
+      "strength": "3",
+      "health": "3"
+    },
+    {
+      "ID": "Sx0007",
+      "name": "Graveyard Cat",
+      "description": "[Animal]When this card is sent to the Graveyard and at least one more unit is sent to the Graveyard this turn, draw 1 card in your Extension Phase.",
+      "color": "black",
+      "level": "1",
+      "card_type": "unit",
+      "cost": "2",
+      "throwaway_cost": "2",
+      "space": "1",
+      "strength": "2",
+      "health": "2"
+    },
+    {
+      "ID": "Sx0008",
+      "name": "Brawler Zombie",
+      "description": "[Undead/Fighter]Gravewalker 6. (You may cast this card from your graveyard for its Gravewalker Cost. You may only activate one Gravewalker per turn.)",
+      "color": "black",
+      "level": "1",
+      "card_type": "unit",
+      "cost": "3",
+      "throwaway_cost": "2",
+      "space": "1",
+      "strength": "5",
+      "health": "3"
+    },
+    {
+      "ID": "Sx0009",
+      "name": "Vengeful Major",
+      "description": "[Undead]If this card is summoned from your Graveyard: You may select up to one enemy card and destroy it.",
+      "color": "black",
+      "level": "1",
+      "card_type": "unit",
+      "cost": "3",
+      "throwaway_cost": "2",
+      "space": "1",
+      "strength": "4",
+      "health": "6"
+    },
+    {
+      "ID": "Sx000a",
+      "name": "Angel of Peace",
+      "description": "[Fallen/Angel]Gravewalker 10. If this card is summoned from your Graveyard: Your opponent cannot attack in his next turn.",
+      "color": "black",
+      "level": "2",
+      "card_type": "unit",
+      "cost": "4",
+      "throwaway_cost": "1",
+      "space": "2",
+      "strength": "1",
+      "health": "1"
+    },
+    {
+      "ID": "Sx000b",
+      "name": "Fallen of Loss",
+      "description": "[Fallen]Once per turn, you may discard a card and if you do, your opponent discards a card.",
+      "color": "black",
+      "level": "2",
+      "card_type": "unit",
+      "cost": "4",
+      "throwaway_cost": "2",
+      "space": "1",
+      "strength": "7",
+      "health": "6"
+    },
+    {
+      "ID": "Sx000c",
+      "name": "Angel of Exchange",
+      "description": "[Fallen/Angel]Once per turn, you may pay 5 and sacrifice this unit and if you do, add a card from your Graveyard back to your Hand. You can not cast it this turn.",
+      "color": "black",
+      "level": "2",
+      "card_type": "unit",
+      "cost": "4",
+      "throwaway_cost": "4",
+      "space": "1",
+      "strength": "6",
+      "health": "5"
+    },
+    {
+      "ID": "Sx000d",
+      "name": "Rotting Wolf",
+      "description": "[Animal]First Strike. When this card is sent to the Graveyard: Select up to two enemy units and half their STR until the end of this turn.",
+      "color": "black",
+      "level": "2",
+      "card_type": "unit",
+      "cost": "5",
+      "throwaway_cost": "4",
+      "space": "1",
+      "strength": "7",
+      "health": "7"
+    },
+    {
+      "ID": "Sx000e",
+      "name": "Leech Monster",
+      "description": "[Undead/Animal]Gravewalker 8. If this card is summoned from your Graveyard: Your opponent discards 2 cards. When this card is summoned: Draw 1 card for each unit which has less STR than its original STR.",
+      "color": "black",
+      "level": "2",
+      "card_type": "unit",
+      "cost": "5",
+      "throwaway_cost": "4",
+      "space": "1",
+      "strength": "5",
+      "health": "6"
+    },
+    {
+      "ID": "Sx000f",
+      "name": "Fallen of Fatigue",
+      "description": "[Fallen](Quick)You may pay 3 and if you do, select up to 3 enemy units and reduce their STR to 0 until the end of this turn.",
+      "color": "black",
+      "level": "2",
+      "card_type": "unit",
+      "cost": "5",
+      "throwaway_cost": "4",
+      "space": "1",
+      "strength": "6",
+      "health": "9"
+    },
+    {
+      "ID": "Sx0010",
+      "name": "Angel of Protection",
+      "description": "[Angel]Flash. When this unit is summoned, you may select an enemy unit and if you do, the selected unit cannot deal combat damage until the end of this turn and its effects are negated until the end of this turn. The turn this card is summoned, it can block up to 2 enemy attackers.",
+      "color": "black",
+      "level": "3",
+      "card_type": "unit",
+      "cost": "6",
+      "throwaway_cost": "6",
+      "space": "2",
+      "strength": "4",
+      "health": "11"
+    },
+    {
+      "ID": "Sx0011",
+      "name": "Fallen Mentor and Angel Student - TAG TEAM",
+      "description": "[Fallen/Angel/TAG TEAM]If this unit is summoned to occupy a vertical space: When you discard a card, this card gains (+1/+1) until the end of this turn. If this unit is summoned to occupy a horizontal space: Once per turn, you may cast an additional Gravewalker from your Graveyard this turn by paying its Gravewalker Cost, but if you do, you cannot attack this turn. (If you already attacked, you cannot use this effect.)",
+      "color": "black",
+      "level": "3",
+      "card_type": "unit",
+      "cost": "6",
+      "throwaway_cost": "5",
+      "space": "2",
+      "strength": "9",
+      "health": "8"
+    },
+    {
+      "ID": "Sx0012",
+      "name": "Sleeping Giant",
+      "description": "[Undead]Gravewalker 9.",
+      "color": "black",
+      "level": "3",
+      "card_type": "unit",
+      "cost": "7",
+      "throwaway_cost": "6",
+      "space": "2",
+      "strength": "12",
+      "health": "10"
+    },
+    {
+      "ID": "Sx0013",
+      "name": "Fallen of Life",
+      "description": "[Fallen]Once per turn, you may discard your entire Hand and if you do, this unit gains (-1/0) for each card discarded this way, also draw 1 card for each 2 cards discarded.",
+      "color": "black",
+      "level": "3",
+      "card_type": "unit",
+      "cost": "7",
+      "throwaway_cost": "6",
+      "space": "2",
+      "strength": "12",
+      "health": "10"
+    },
+    {
+      "ID": "Sx0014",
+      "name": "Angel of Death",
+      "description": "[Fallen/Angel/Legend]You may cast up to 3 Gravewalkers from your Graveyard each turn. All units without Gravewalk in your Graveyard gain Gravewalk X, where X is their Cost. When a unit with Gravewalk is summoned from your Graveyard, you may select up to one card an opponent controls and banish it.",
+      "color": "black",
+      "card_type": "unit",
+      "space": "3",
+      "strength": "15",
+      "health": "16"
+    },
+    {
+      "ID": "Sx0015",
+      "name": "Decay",
+      "description": "Discard 1 card.",
+      "color": "black",
+      "level": "1",
+      "card_type": "magic",
+      "cost": "2",
+      "throwaway_cost": "2",
+      "spell_speed": "2"
+    },
+    {
+      "ID": "Sx0016",
+      "name": "Curse",
+      "description": "Sacrifice one of your units and select an enemy unit: Decrease the selected unit's STR by the STR of the sacrificed unit and deal damage to the selected unit equal to the HP of the sacrificed unit.",
+      "color": "black",
+      "level": "1",
+      "card_type": "magic",
+      "cost": "2",
+      "throwaway_cost": "1",
+      "spell_speed": "0"
+    },
+    {
+      "ID": "Sx0017",
+      "name": "Impede",
+      "description": "Give a unit (-2/0) until the end of this turn.",
+      "color": "black",
+      "level": "1",
+      "card_type": "magic",
+      "cost": "3",
+      "throwaway_cost": "2",
+      "spell_speed": "1"
+    },
+    {
+      "ID": "Sx0018",
+      "name": "Raise Undead",
+      "description": "Select a unit in your Graveyard. Grant it Gravewalker X, where X is the unit's Cost +3. The selected unit is an Undead next to its other types.",
+      "color": "black",
+      "level": "2",
+      "card_type": "magic",
+      "cost": "4",
+      "throwaway_cost": "2",
+      "spell_speed": "1"
+    },
+    {
+      "ID": "Sx0019",
+      "name": "Group Penalty",
+      "description": "Every player sacrifices a controlled unit. If a player cannot sacrifice a creature, they discard the unit with the highest STR in their 10 cards from the top of their Deck. If its a tie, you may decide the discarded creature. If there is no unit available, you may discard any other card from the 10 cards instead.",
+      "color": "black",
+      "level": "2",
+      "card_type": "magic",
+      "cost": "5",
+      "throwaway_cost": "4",
+      "spell_speed": "1"
+    },
+    {
+      "ID": "Sx001a",
+      "name": "Graveyard",
+      "description": "[Field]Your Gravewalker Costs are reduced by 1. Once per turn, you may cast an additional Gravewalker. Once per turn, when a Gravewalker is activated: You may select an enemy unit and if you do, give it (-X/0) until the end of this turn, where X is the Gravewalker unit's STR.",
+      "color": "black",
+      "level": "3",
+      "card_type": "magic",
+      "cost": "6",
+      "throwaway_cost": "5",
+      "spell_speed": "0"
+    },
+    {
+      "ID": "Sx001b",
+      "name": "Necromancy",
+      "description": "Select 2 black Magic from your Graveyard. You may cast them this turn by banishing cards from your Graveyard equal to the selected cards' Cost.",
+      "color": "black",
+      "level": "3",
+      "card_type": "magic",
+      "cost": "7",
+      "throwaway_cost": "5",
+      "spell_speed": "0"
+    },
+    {
+      "ID": "Sx001c",
+      "name": "Attack of the Living Dead",
+      "description": "Cast as many units from your Graveyard as possible, but their effects are negated. They have Haste, die at the end of this turn and are Undeads instead of their types. Until the end of the game, cards sent to your Graveyard are banished instead.",
+      "color": "black",
+      "level": "4",
+      "card_type": "magic",
+      "cost": "8",
+      "throwaway_cost": "7",
+      "spell_speed": "2"
+    }
+  ]
+}

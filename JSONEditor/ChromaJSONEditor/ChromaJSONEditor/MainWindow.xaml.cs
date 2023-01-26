@@ -1,22 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using System.Text.Json;
 using Newtonsoft.Json;
 using System.IO;
-using Newtonsoft.Json.Linq;
-using System.Diagnostics;
+using ChromaJSONEditor.Dialogs;
 
 namespace ChromaJSONEditor
 {
@@ -25,21 +15,22 @@ namespace ChromaJSONEditor
         private bool holdsControl = false;
         private bool holdsShift = false;
         private bool showAllAttributes = false;
-        private string lastShownJSON = string.Empty;
+        private bool hasUnsavedChanges = false;
+        private int lastUsedIndex = 0;
+        private string lastDisplayedBaseJSON = string.Empty;
         private List<Database> entries = new List<Database>();
-        private Database lastShownEntry = null;
-
-        private string newJson = string.Empty; // TODO: Füllen und Abspeichern
 
         private string currentFilterName = string.Empty;
         private string currentFilterColor = string.Empty;
         private string currentFilterColorIDshortName = string.Empty;
 
         private const string PATH_DATABASE = @"D:\Projekte\Vivacious\2022\Chroma\Tools\JSONTranswriter\content\database\database.json";
+        private const string PATH_DATABASE_BACKUP = @"D:\Projekte\Vivacious\2022\Chroma\Tools\JSONTranswriter\content\database\database-BACKUP.json";
         private const string GENERATOR_FILE = @"D:\Projekte\Vivacious\2022\Chroma\Tools\JSONTranswriter\main.py";
-        private const string START_ID = "Rx0000";
-        private const string VERSION = "1.0.0";
-        private const bool PATH_STARTS_IN_PARENT = true;
+        private const string START_ID = "Rx0001";
+        private const string VERSION = "1.1.0";
+
+        private Database lastShownEntry => entries[lastUsedIndex];
 
         public MainWindow()
         {
@@ -47,11 +38,15 @@ namespace ChromaJSONEditor
             Startup();           
         }
 
-        protected override void OnContentRendered(EventArgs e)
+        protected override async void OnContentRendered(EventArgs e)
         {
             base.OnContentRendered(e);
             FillListWithCurrentFilters();
-            ShowJSONEntry(GetEntryFromID(START_ID));
+            do
+            {
+                await Task.Delay(10);
+                ShowJSONEntry(GetEntryFromID(START_ID));
+            } while (JSONEditorEditorBox.Text == "Loading...");
         }
 
         private void Startup()
@@ -74,55 +69,96 @@ namespace ChromaJSONEditor
                     CardSearchListBox.Items.Add($"{db.ID}\t|\t{db.name}");
             });
 
+            ScrollToLastUsedIndex();
+        }
+
+        private void ScrollToLastUsedIndex()
+        {
             if (CardSearchListBox.Items.Count > 0)
-                CardSearchListBox.ScrollIntoView(CardSearchListBox.Items[0]);
+                CardSearchListBox.ScrollIntoView(CardSearchListBox.Items[lastUsedIndex]);
         }
 
         private bool FitsCurrentFilter(Database entry)
         {
+            if (entry == null) return false;
+
             return (string.IsNullOrEmpty(currentFilterName) || Contains(entry.name, currentFilterName) || Contains(entry.ID, currentFilterName))
                 && (string.IsNullOrEmpty(currentFilterColor) || entry.color == currentFilterColor.ToLower() || entry.ID.StartsWith(currentFilterColorIDshortName));
         }
 
-        private bool PartNeedsToBeDisplayed(string part, Database entry) //TODO: Anzeigen der Werte je nach Kartentyp ODER falls was anderes als null drinsteht ODER ShowAllAttributes
+        private bool PartNeedsToBeDisplayed(string part, Database entry,
+            ref string currentParent) 
         {
+            string entryType = entry.card_type;
+
+            if (!string.IsNullOrEmpty(currentParent))
+            {
+                if (part.Trim() == "],")
+                    currentParent = string.Empty;
+
+                return true;
+            }
+
             if (part.Contains("\""))
             {
-                string entryType = entry.card_type;
                 string partName = part.Split('\"')[1];
+
                 bool baseCondition = partName == "ID" || partName == "name" || partName == "description" || partName == "color" || partName == "card_type" || partName == "is_life_cloth";
 
                 if (baseCondition)
                     return true;
 
-                switch(entryType)
+                switch (entryType)
                 {
                     case "leader":
-                        return partName == "passive_abilities" || partName == "active_abilities" || partName == "leader_attacks" || partName == "level" || partName == "cost" || partName == "health" || partName == "life_cloth_threshold";
-
+                        if (partName == "passive_abilities" || partName == "active_abilities" || partName == "leader_attacks" || partName == "life_cloth_thresholds")
+                            currentParent = partName;
+                        return partName == "passive_abilities" || partName == "active_abilities" || partName == "leader_attacks" || partName == "level" || partName == "cost" || partName == "health" || partName == "life_cloth_thresholds";
                     case "unit":
                         return ((partName == "level" || partName == "cost" || partName == "throwaway_cost") && entry.is_life_cloth == "0") || partName == "space" || partName == "strength" || partName == "health";
 
                     case "magic":
                         return ((partName == "level" || partName == "cost" || partName == "throwaway_cost") && entry.is_life_cloth == "0") || partName == "spell_speed";
                 }
-
             }
 
             return true;
         }
 
+        private int HighestIndexForColorShort(string colorShort, out int listIndex)
+        {
+            int currentHighestIndex = 0;
+            int highestListIndex = 0;
+            foreach(Database db in entries)
+            {
+                if (db.ID.StartsWith($"{colorShort}x"))
+                {
+                    int x = int.Parse(db.ID.Split('x')[1], System.Globalization.NumberStyles.HexNumber);
+                    if (x > currentHighestIndex)
+                    {
+                        highestListIndex = entries.IndexOf(db);
+                        currentHighestIndex = x;
+                    }
+                }
+            }
+
+            listIndex = highestListIndex;
+            return currentHighestIndex;
+        }
+
         private void ShowJSONEntry(Database entry)
         {
-            if (entry == null) return;
+            if (entry == null) { Console.WriteLine("NULL"); return; }
+
+            hasUnsavedChanges = false;
 
             string result = JsonConvert.SerializeObject(entry, Formatting.Indented);
-            lastShownJSON = result;
             List<string> finalParts = new List<string>();
             string[] parts = result.Split('\n');
+            string currentParent = string.Empty;
             for (int i = 0; i < parts.Length; i++)
             {
-                if (!showAllAttributes && !PartNeedsToBeDisplayed(parts[i], entry))
+                if (!showAllAttributes && !PartNeedsToBeDisplayed(parts[i], entry, ref currentParent))
                     continue;
 
                 parts[i] = parts[i].Replace("  ", "\t");
@@ -133,23 +169,92 @@ namespace ChromaJSONEditor
 
             JSONEditorEditorBox.Text = result;
 
-            lastShownEntry = entry;
+            lastUsedIndex = entries.IndexOf(entry);
+            lastDisplayedBaseJSON = result;
         }
 
         private Database GetEntryFromID(string id)
         {
             foreach(Database db in entries)
-                if(db.ID == id)
+                if(db != null && db.ID == id)
                     return db;
 
             return null;
         }
 
-        public static bool Contains(string source, string toCheck, StringComparison comp = StringComparison.OrdinalIgnoreCase)
+        private bool Contains(string source, string toCheck, StringComparison comp = StringComparison.OrdinalIgnoreCase)
         {
             return source?.IndexOf(toCheck, comp) >= 0;
         }
 
+        private void SerializeInJSONFile()
+        {
+            File.Copy(PATH_DATABASE, PATH_DATABASE_BACKUP, true);
+
+            JsonSerializerSettings settings = new JsonSerializerSettings();
+            settings.Formatting = Formatting.Indented;
+            settings.NullValueHandling = NullValueHandling.Ignore;          
+            
+            Root root = new Root();
+
+            entries.RemoveAll(item => item == null);
+
+            root.database = entries;
+
+            File.WriteAllText(PATH_DATABASE, JsonConvert.SerializeObject(root, settings));
+
+            Console.WriteLine("Gespeichert!");
+        }
+
+        private void CheckForUnsavedChanges()
+        {
+            hasUnsavedChanges |= lastDisplayedBaseJSON != JSONEditorEditorBox.Text;
+
+            if (hasUnsavedChanges)
+            {
+                if (!Title.EndsWith("*"))
+                    Title += "*";
+
+                MessageBoxResult result = MessageBox.Show($"Save changes to {lastShownEntry.name} (ID: {lastShownEntry.ID})?", "Unsaved changes detected!", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+
+                if (result == MessageBoxResult.Yes)
+                    Save_Current_Card_Click(null, null);
+            }
+        }
+
+        private void CreateCardsFor(string color, int amount)
+        {
+            string colorShort = ColorToColorShort(color);
+            int startIndex = HighestIndexForColorShort(colorShort, out int listIndex) + 1;
+            for (int i=startIndex; i<startIndex+amount; i++)
+            {
+                //Bei Multi-Erzeugung können die IDs spinnen
+                int indx = i;
+                Database entry = new Database();
+                entry.ID = $"{colorShort}x{indx.ToString("X4").ToLower()}";
+                entry.name = "<New Card>";
+                entry.color = color;
+
+                entries.Insert(listIndex+1, entry);
+                if (i == startIndex)
+                    ShowJSONEntry(entry);
+            }
+        }
+
+        private string ColorToColorShort(string color)
+        {
+            switch(color)
+            {
+                case "red": return "R";
+                case "purple": return "P";
+                case "green": return "G";
+                case "blue": return "B";
+                case "black": return "S";
+            }
+
+            return null;
+        }
+       
         #region JSON Classes
         public class ActiveAbility
         {
@@ -238,12 +343,22 @@ namespace ChromaJSONEditor
 
         private void Save_Current_Card_Click(object sender, RoutedEventArgs e)
         {
-            newJson.Replace(lastShownJSON, JSONEditorEditorBox.Text); //TODO: EditorBox-Text an Json anpassen; Null-Werte ignorieren           
+            lastDisplayedBaseJSON = JSONEditorEditorBox.Text;
+
+            hasUnsavedChanges = false;
+            if (Title.EndsWith("*"))
+                Title = Title.Substring(0, Title.Length - 1);
+
+            entries[lastUsedIndex] = JsonConvert.DeserializeObject<Database>(JSONEditorEditorBox.Text);
+
+            FillListWithCurrentFilters();
+
+            SerializeInJSONFile();
         }
 
         private void Save_All_Click(object sender, RoutedEventArgs e)
         {
-            //TODO: Liste an ungespeicherten Änderungen im Hinterkopf behalten
+            Save_Current_Card_Click(sender, e);
         }
 
         private void Load_Click(object sender, RoutedEventArgs e)
@@ -253,17 +368,41 @@ namespace ChromaJSONEditor
 
         private void New_Card_Click(object sender, RoutedEventArgs e)
         {
-            // TODO: Neue Karten
+            NewCardDialog ncd = new NewCardDialog();
+            ncd.Show();
+            GetWindow(ncd).Closing += (s, x) =>
+            {
+                NewCardResponse response = ncd.response;
+                if (response != null && response.ok)
+                {
+                    CreateCardsFor(response.color, response.amount);
+
+                    FillListWithCurrentFilters();
+                    ScrollToLastUsedIndex();
+
+                    Save_Current_Card_Click(sender, e);
+                }
+            };
         }
 
         private void Delete_Current_Card_Click(object sender, RoutedEventArgs e)
         {
-            newJson.Replace(lastShownJSON, string.Empty); // TODO: Siehe Save
+            MessageBoxResult result = MessageBox.Show($"Are you sure you want to delete {lastShownEntry.name} (ID: {lastShownEntry.ID})?\n\nTHIS CAN NOT BE UNDONE!", "Really delete card?", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+
+            if (result == MessageBoxResult.Yes)
+            {
+                entries[lastUsedIndex] = null;
+                lastUsedIndex = 0;
+
+                FillListWithCurrentFilters();
+
+                Save_Current_Card_Click(sender, e);
+            }
         }
 
         private void GenerateDeck_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Execute main.py in root!", "Function not implemented yet", MessageBoxButton.OK, MessageBoxImage.Error);
+            MessageBox.Show("Execute main.py in root!", "Function not implemented yet", MessageBoxButton.OK, MessageBoxImage.Warning);
         }
 
         private void ListBox_SelectionChanged(object sender, EventArgs e)
@@ -271,6 +410,9 @@ namespace ChromaJSONEditor
             if (sender != null)
             {
                 ListBox selected = (ListBox)sender;
+
+                CheckForUnsavedChanges();
+
                 ShowJSONEntry(GetEntryFromID(selected.SelectedItem?.ToString().Split('\t')[0]));
             }
         }
@@ -317,6 +459,19 @@ namespace ChromaJSONEditor
             }
 
             FillListWithCurrentFilters();
+        }
+
+        private void JSONEditorEditorBox_TextChanged(object sender, EventArgs e)
+        {
+            hasUnsavedChanges = true;
+
+            if (!Title.EndsWith("*"))
+                Title += "*";
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            CheckForUnsavedChanges();
         }
     }
 }

@@ -41,4 +41,5 @@ D:\Projekte\Vivacious\2022\Chroma\Tools\JSONTranswriter\JSONEditor\ChromaJSONEdi
 D:\Projekte\Vivacious\2022\Chroma\Tools\JSONTranswriter\JSONEditor\ChromaJSONEditor\ChromaJSONEditor\bin\Debug\Microsoft.Dynamic.xml
 D:\Projekte\Vivacious\2022\Chroma\Tools\JSONTranswriter\JSONEditor\ChromaJSONEditor\ChromaJSONEditor\bin\Debug\Microsoft.Scripting.xml
 D:\Projekte\Vivacious\2022\Chroma\Tools\JSONTranswriter\JSONEditor\ChromaJSONEditor\ChromaJSONEditor\bin\Debug\Microsoft.Scripting.Metadata.xml
-D:\Projekte\Vivacious\2022\Chroma\Tools\JSONTranswriter\JSONEditor\ChromaJSONEditor\ChromaJSONEditor\obj\Debug\ChromaJSONEditor_Content.g.cs
+D:\Projekte\Vivacious\2022\Chroma\Tools\JSONTranswriter\JSONEditor\ChromaJSONEditor\ChromaJSONEditor\obj\Debug\Dialogs\NewCardDialog.g.cs
+D:\Projekte\Vivacious\2022\Chroma\Tools\JSONTranswriter\JSONEditor\ChromaJSONEditor\ChromaJSONEditor\obj\Debug\Dialogs\NewCardDialog.baml
