@@ -141,7 +141,7 @@
       "card_type": "unit",
       "space": "1",
       "strength": "10",
-      "health": "30"
+      "health": "20"
     },
     {
       "ID": "Rx0005",
@@ -500,31 +500,9 @@
     },
     {
       "ID": "Rx0023",
-      "name": "Rocket Engineer",
-      "description": "[Architect]When this unit enters the battlefield: The next time an allied unit is summoned this turn, grant it Haste.",
+      "name": "<New Card>",
       "color": "red",
-      "level": "1",
-      "card_type": "unit",
-      "cost": "3",
-      "throwaway_cost": "2",
-      "space": "1",
-      "strength": "20",
-      "health": "30"
-    },
-    {
-      "ID": "Rx0024",
-      "name": "<New Card>",
-      "color": "red"
-    },
-    {
-      "ID": "Rx0025",
-      "name": "<New Card>",
-      "color": "red"
-    },
-    {
-      "ID": "Rx0026",
-      "name": "<New Card>",
-      "color": "red"
+      "card_type": "leader"
     },
     {
       "ID": "Px0000",
@@ -1366,16 +1344,6 @@
       "cost": "8",
       "throwaway_cost": "5",
       "spell_speed": "0"
-    },
-    {
-      "ID": "Gx001D",
-      "name": "<New Card>",
-      "color": "green"
-    },
-    {
-      "ID": "gx001e",
-      "name": "<New Card>",
-      "color": "green"
     },
     {
       "ID": "Bx0000",

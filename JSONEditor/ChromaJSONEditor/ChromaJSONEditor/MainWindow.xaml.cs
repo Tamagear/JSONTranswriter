@@ -24,17 +24,22 @@ namespace ChromaJSONEditor
         private string currentFilterColor = string.Empty;
         private string currentFilterColorIDshortName = string.Empty;
 
-        private const string PATH_DATABASE = @"D:\Projekte\Vivacious\2022\Chroma\Tools\JSONTranswriter\content\database\database.json";
-        private const string PATH_DATABASE_BACKUP = @"D:\Projekte\Vivacious\2022\Chroma\Tools\JSONTranswriter\content\database\database-BACKUP.json";
-        private const string GENERATOR_FILE = @"D:\Projekte\Vivacious\2022\Chroma\Tools\JSONTranswriter\main.py";
-        private const string START_ID = "Rx0001";
-        private const string VERSION = "1.1.0";
+        private string databasePath = string.Empty;
 
+        private const string PATH_DATABASE_SUFFIX = @"database.json";
+        private const string PATH_DATABASE_BACKUP_SUFFIX = @"database-BACKUP.json";
+        private const string GENERATOR_FILE = @"D:\Projekte\Vivacious\2022\Chroma\Tools\JSONTranswriter\main.py";
+        private const string START_ID = "Rx0000";
+        private const string VERSION = "1.1.1";
+
+        private string pathDatabase => databasePath + PATH_DATABASE_SUFFIX;
+        private string pathDatabaseBackup => databasePath + PATH_DATABASE_BACKUP_SUFFIX;
         private Database lastShownEntry => entries[lastUsedIndex];
 
         public MainWindow()
         {
             InitializeComponent();
+            SetDatabasePath();
             Startup();           
         }
 
@@ -51,7 +56,7 @@ namespace ChromaJSONEditor
 
         private void Startup()
         {
-            using (StreamReader r = new StreamReader(PATH_DATABASE))
+            using (StreamReader r = new StreamReader(pathDatabase))
             {
                 Root deserializedClass = JsonConvert.DeserializeObject<Root>(r.ReadToEnd());
                 entries = deserializedClass.database;
@@ -189,7 +194,7 @@ namespace ChromaJSONEditor
 
         private void SerializeInJSONFile()
         {
-            File.Copy(PATH_DATABASE, PATH_DATABASE_BACKUP, true);
+            File.Copy(pathDatabase, pathDatabaseBackup, true);
 
             JsonSerializerSettings settings = new JsonSerializerSettings();
             settings.Formatting = Formatting.Indented;
@@ -201,7 +206,7 @@ namespace ChromaJSONEditor
 
             root.database = entries;
 
-            File.WriteAllText(PATH_DATABASE, JsonConvert.SerializeObject(root, settings));
+            File.WriteAllText(pathDatabase, JsonConvert.SerializeObject(root, settings));
 
             Console.WriteLine("Gespeichert!");
         }
@@ -219,6 +224,9 @@ namespace ChromaJSONEditor
 
                 if (result == MessageBoxResult.Yes)
                     Save_Current_Card_Click(null, null);
+                else if (Title.EndsWith("*"))
+                    Title = Title.Substring(0, Title.Length - 1);
+
             }
         }
 
@@ -228,14 +236,13 @@ namespace ChromaJSONEditor
             int startIndex = HighestIndexForColorShort(colorShort, out int listIndex) + 1;
             for (int i=startIndex; i<startIndex+amount; i++)
             {
-                //Bei Multi-Erzeugung können die IDs spinnen
                 int indx = i;
                 Database entry = new Database();
                 entry.ID = $"{colorShort}x{indx.ToString("X4").ToLower()}";
                 entry.name = "<New Card>";
                 entry.color = color;
 
-                entries.Insert(listIndex+1, entry);
+                entries.Insert(listIndex+1+(i-startIndex), entry);
                 if (i == startIndex)
                     ShowJSONEntry(entry);
             }
@@ -255,6 +262,21 @@ namespace ChromaJSONEditor
             return null;
         }
        
+        private void SetDatabasePath()
+        {
+            string cur = Directory.GetCurrentDirectory();
+            while(!string.IsNullOrEmpty(cur) && !cur.EndsWith(@"JSONTranswriter"))
+            {
+                Console.WriteLine("Currently in: " + cur);
+                cur = Directory.GetParent(cur)?.ToString();
+            }
+
+            if (string.IsNullOrEmpty(cur))
+                MessageBox.Show("Please execute this program from within (a subfolder of) this project's repository.", "Error: Default Database Path not found!", MessageBoxButton.OK, MessageBoxImage.Error);
+
+            databasePath = $@"{cur}\content\database\";
+        }
+
         #region JSON Classes
         public class ActiveAbility
         {
@@ -332,6 +354,13 @@ namespace ChromaJSONEditor
                         else
                             Save_Current_Card_Click(sender, null);
                     break;
+                case Key.Delete:
+                    Delete_Current_Card_Click(sender, null);
+                    break;
+                case Key.N:
+                    if (holdsControl)
+                        New_Card_Click(sender, null);
+                    break;
             }
         }
 
@@ -380,7 +409,7 @@ namespace ChromaJSONEditor
                     FillListWithCurrentFilters();
                     ScrollToLastUsedIndex();
 
-                    Save_Current_Card_Click(sender, e);
+                    SerializeInJSONFile();
                 }
             };
         }
@@ -391,12 +420,14 @@ namespace ChromaJSONEditor
 
             if (result == MessageBoxResult.Yes)
             {
-                entries[lastUsedIndex] = null;
-                lastUsedIndex = 0;
+                Database deleteEntry = lastShownEntry;
+                entries.Remove(deleteEntry);
 
                 FillListWithCurrentFilters();
 
-                Save_Current_Card_Click(sender, e);
+                SerializeInJSONFile();
+
+                ShowJSONEntry(entries[0]);
             }
         }
 

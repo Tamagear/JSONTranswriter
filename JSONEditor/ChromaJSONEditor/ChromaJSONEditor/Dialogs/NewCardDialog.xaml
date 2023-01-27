@@ -21,7 +21,7 @@
                     <ComboBoxItem>Black</ComboBoxItem>
             </ComboBox>
             <Label Content="New Card Amount"/>
-            <TextBox x:Name="Amount_Field" Text="1" TextAlignment="Right" IsReadOnly="True"/>
+            <TextBox x:Name="Amount_Field" Text="1" TextAlignment="Right"/>
             <Separator Height="10" Background="Transparent"/>
             <Button Content="Create New Card(s)" Click="Button_Click"/>
         </StackPanel>
