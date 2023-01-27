@@ -32,7 +32,7 @@ Upon generation, a template is applied and colorized according to the card infor
 - `tkinter`
 - `shutil`
 - `PyTorch`
-- `bing_image_downloader
+- `bing_image_downloader`
 - `playsound (Version 1.2.2)`
 
 ## License
