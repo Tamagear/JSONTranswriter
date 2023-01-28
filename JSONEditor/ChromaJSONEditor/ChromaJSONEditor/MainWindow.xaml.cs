@@ -30,7 +30,7 @@ namespace ChromaJSONEditor
         private const string PATH_DATABASE_BACKUP_SUFFIX = @"database-BACKUP.json";
         private const string GENERATOR_FILE = @"D:\Projekte\Vivacious\2022\Chroma\Tools\JSONTranswriter\main.py";
         private const string START_ID = "Rx0000";
-        private const string VERSION = "1.1.1";
+        private const string VERSION = "1.1.2";
 
         private string pathDatabase => databasePath + PATH_DATABASE_SUFFIX;
         private string pathDatabaseBackup => databasePath + PATH_DATABASE_BACKUP_SUFFIX;
@@ -176,6 +176,7 @@ namespace ChromaJSONEditor
 
             lastUsedIndex = entries.IndexOf(entry);
             lastDisplayedBaseJSON = result;
+            CardSearchListBox.SelectedIndex = lastUsedIndex;
         }
 
         private Database GetEntryFromID(string id)
@@ -277,6 +278,24 @@ namespace ChromaJSONEditor
             databasePath = $@"{cur}\content\database\";
         }
 
+        private void ShowNext()
+        {
+            int targetIndex = lastUsedIndex + 1;
+            if (targetIndex >= entries.Count)
+                targetIndex = 0;
+
+            ShowJSONEntry(entries[targetIndex]);
+        }
+
+        private void ShowPrevious()
+        {
+            int targetIndex = lastUsedIndex - 1;
+            if (targetIndex < 0)
+                targetIndex = entries.Count-1;
+
+            ShowJSONEntry(entries[targetIndex]);
+        }
+
         #region JSON Classes
         public class ActiveAbility
         {
@@ -360,6 +379,24 @@ namespace ChromaJSONEditor
                 case Key.N:
                     if (holdsControl)
                         New_Card_Click(sender, null);
+                    break;
+                case Key.PageUp:
+                    ShowPrevious();
+                    break;
+                case Key.PageDown:
+                    ShowNext();
+                    break;
+                case Key.Left:
+                    ShowPrevious();
+                    break;
+                case Key.Right:
+                    ShowNext();
+                    break;
+                case Key.Up:
+                    ShowPrevious();
+                    break;
+                case Key.Down:
+                    ShowNext();
                     break;
             }
         }
