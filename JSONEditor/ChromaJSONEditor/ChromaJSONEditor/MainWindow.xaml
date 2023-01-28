@@ -5,6 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:tools="clr-namespace:ChromaJSONEditor.Tools"
         xmlns:local="clr-namespace:ChromaJSONEditor"
+        xmlns:avalonEdit="http://icsharpcode.net/sharpdevelop/avalonedit"
+        xmlns:editing="clr-namespace:ICSharpCode.AvalonEdit.Editing;assembly=ICSharpCode.AvalonEdit"
+        xmlns:rendering="clr-namespace:ICSharpCode.AvalonEdit.Rendering;assembly=ICSharpCode.AvalonEdit"
         mc:Ignorable="d"
         Title="CHROMA Card Editor" 
         WindowStartupLocation="CenterScreen" WindowStyle="SingleBorderWindow"
@@ -43,7 +46,7 @@
                 <Button Content="New Card" Width="200" Margin="5" Click="New_Card_Click"/>
                 <Button Content="Delete Current Card" Width="200" Margin="5" Click="Delete_Current_Card_Click"/>
             </WrapPanel>
-            <TextBox x:Name="JSONEditorEditorBox" TextWrapping="Wrap" Width="1268" Height="758" HorizontalAlignment="Right" VerticalAlignment="Top" Background="#181818" Foreground="White" Text="Loading..." HorizontalScrollBarVisibility="Auto" AcceptsReturn="True" Margin="0,85,20,0" AcceptsTab="True" PreviewTextInput="JSONEditorEditorBox_TextChanged"/>
+            <avalonEdit:TextEditor x:Name="JSONEditorEditorBox" Width="1268" Height="758" HorizontalAlignment="Right" VerticalAlignment="Top" Background="#181818" Foreground="White" Text="Loading..." HorizontalScrollBarVisibility="Auto" Margin="0,85,20,0" PreviewTextInput="JSONEditorEditorBox_TextChanged" WordWrap="True"/>
             <ToggleButton x:Name="ShowAttributeToggleButton" Width="200" Content="Show All Attributes" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="332,0,0,6" Checked="ShowAllAttributes_Checked" Unchecked="ShowAllAttributes_Unchecked"/>
             <Button Content="Generate Deck Atlas from .txt File (Requires Python + Active Internet Connection)" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="500" Margin="696,0,0,6" Click="GenerateDeck_Click"/>
             <Label x:Name="VersionLabel" Content="CHROMA Card Editor Version X.Y.Z | INTERNAL USE ONLY | ©Daggerbunny Studios" HorizontalAlignment="Right" VerticalAlignment="Bottom" FontStyle="Italic" FontSize="10" Margin="2" Foreground="White"/>

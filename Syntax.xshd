@@ -1,0 +1,40 @@
+﻿<SyntaxDefinition name="CHROMA"
+        xmlns="http://icsharpcode.net/sharpdevelop/syntaxdefinition/2008">
+
+    <!-- This is the main ruleset. -->
+    <RuleSet>    
+        <Keywords fontWeight="bold" foreground="#E6A52B">
+            <Word>"ID"</Word>
+            <Word>"name"</Word>            
+            <Word>"description"</Word>            
+            <Word>"passive_abilities"</Word>            
+            <Word>"active_abilities"</Word>            
+            <Word>"leader_attacks"</Word>            
+            <Word>"color"</Word>            
+            <Word>"level"</Word>            
+            <Word>"card_type"</Word>            
+            <Word>"cost"</Word>            
+            <Word>"health"</Word>            
+            <Word>"life_cloth_thresholds"</Word>            
+            <Word>"is_life_cloth"</Word>            
+            <Word>"loyalty_cost"</Word>            
+            <Word>"mana_cost"</Word>            
+            <Word>"strength"</Word>            
+            <Word>"space"</Word>            
+        </Keywords>
+
+         <!-- Digits -->
+        <Rule foreground="#E8F018">
+            [0-9a-zA-Z\+\-\/\\\.\!\'\?\:\;\(\)]+
+        </Rule>
+
+        <Rule foreground="#FC215C">
+            \[|\]
+        </Rule>
+
+        <Rule foreground="#4173F0">
+            \{|\}
+        </Rule>
+
+    </RuleSet>
+</SyntaxDefinition>

@@ -43,3 +43,5 @@ D:\Projekte\Vivacious\2022\Chroma\Tools\JSONTranswriter\JSONEditor\ChromaJSONEdi
 D:\Projekte\Vivacious\2022\Chroma\Tools\JSONTranswriter\JSONEditor\ChromaJSONEditor\ChromaJSONEditor\obj\Release\ChromaJSONEditor.csproj.CopyComplete
 D:\Projekte\Vivacious\2022\Chroma\Tools\JSONTranswriter\JSONEditor\ChromaJSONEditor\ChromaJSONEditor\obj\Release\ChromaJSONEditor.exe
 D:\Projekte\Vivacious\2022\Chroma\Tools\JSONTranswriter\JSONEditor\ChromaJSONEditor\ChromaJSONEditor\obj\Release\ChromaJSONEditor.pdb
+D:\Projekte\Vivacious\2022\Chroma\Tools\JSONTranswriter\JSONEditor\ChromaJSONEditor\ChromaJSONEditor\bin\Release\ICSharpCode.AvalonEdit.dll
+D:\Projekte\Vivacious\2022\Chroma\Tools\JSONTranswriter\JSONEditor\ChromaJSONEditor\ChromaJSONEditor\bin\Release\ICSharpCode.AvalonEdit.xml

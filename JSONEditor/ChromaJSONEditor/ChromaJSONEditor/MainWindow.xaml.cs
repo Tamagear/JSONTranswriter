@@ -7,6 +7,9 @@ using System.Windows.Input;
 using Newtonsoft.Json;
 using System.IO;
 using ChromaJSONEditor.Dialogs;
+using System.Windows.Documents;
+using ICSharpCode.AvalonEdit.Highlighting;
+using ICSharpCode.AvalonEdit.Highlighting.Xshd;
 
 namespace ChromaJSONEditor
 {
@@ -25,20 +28,30 @@ namespace ChromaJSONEditor
         private string currentFilterColorIDshortName = string.Empty;
 
         private string databasePath = string.Empty;
+        private string basePath = string.Empty;
+        private string syntaxPath = string.Empty;        
+        public IHighlightingDefinition syntax { get; set; }
 
         private const string PATH_DATABASE_SUFFIX = @"database.json";
         private const string PATH_DATABASE_BACKUP_SUFFIX = @"database-BACKUP.json";
         private const string GENERATOR_FILE = @"D:\Projekte\Vivacious\2022\Chroma\Tools\JSONTranswriter\main.py";
         private const string START_ID = "Rx0000";
-        private const string VERSION = "1.1.2";
+        private const string VERSION = "1.2.0";
 
         private string pathDatabase => databasePath + PATH_DATABASE_SUFFIX;
         private string pathDatabaseBackup => databasePath + PATH_DATABASE_BACKUP_SUFFIX;
+        private string JSONEditorBoxText {
+            get => JSONEditorEditorBox.Text;
+            set
+            {
+                JSONEditorEditorBox.Text = value;
+            }
+        }
         private Database lastShownEntry => entries[lastUsedIndex];
 
         public MainWindow()
         {
-            InitializeComponent();
+            InitializeComponent();           
             SetDatabasePath();
             Startup();           
         }
@@ -51,7 +64,7 @@ namespace ChromaJSONEditor
             {
                 await Task.Delay(10);
                 ShowJSONEntry(GetEntryFromID(START_ID));
-            } while (JSONEditorEditorBox.Text == "Loading...");
+            } while (JSONEditorBoxText == "Loading...");
         }
 
         private void Startup()
@@ -63,6 +76,11 @@ namespace ChromaJSONEditor
             }
 
             VersionLabel.Content = VersionLabel.Content.ToString().Replace("X.Y.Z", VERSION);
+
+            using (System.Xml.XmlReader reader = System.Xml.XmlReader.Create(syntaxPath))
+            {
+                JSONEditorEditorBox.SyntaxHighlighting = HighlightingLoader.Load(reader, HighlightingManager.Instance);
+            }
         }
 
         private void FillListWithCurrentFilters()
@@ -79,7 +97,7 @@ namespace ChromaJSONEditor
 
         private void ScrollToLastUsedIndex()
         {
-            if (CardSearchListBox.Items.Count > 0)
+            if (CardSearchListBox.Items.Count > 0 && lastUsedIndex < CardSearchListBox.Items.Count)
                 CardSearchListBox.ScrollIntoView(CardSearchListBox.Items[lastUsedIndex]);
         }
 
@@ -172,10 +190,10 @@ namespace ChromaJSONEditor
             
             result = string.Join("\n", finalParts.ToArray());
 
-            JSONEditorEditorBox.Text = result;
+            JSONEditorBoxText = result;
 
             lastUsedIndex = entries.IndexOf(entry);
-            lastDisplayedBaseJSON = result;
+            lastDisplayedBaseJSON = JSONEditorBoxText;
             CardSearchListBox.SelectedIndex = lastUsedIndex;
         }
 
@@ -212,9 +230,9 @@ namespace ChromaJSONEditor
             Console.WriteLine("Gespeichert!");
         }
 
-        private void CheckForUnsavedChanges()
+        private bool CheckForUnsavedChanges()
         {
-            hasUnsavedChanges |= lastDisplayedBaseJSON != JSONEditorEditorBox.Text;
+            hasUnsavedChanges |= lastDisplayedBaseJSON != JSONEditorBoxText;
 
             if (hasUnsavedChanges)
             {
@@ -224,11 +242,12 @@ namespace ChromaJSONEditor
                 MessageBoxResult result = MessageBox.Show($"Save changes to {lastShownEntry.name} (ID: {lastShownEntry.ID})?", "Unsaved changes detected!", MessageBoxButton.YesNo, MessageBoxImage.Warning);
 
                 if (result == MessageBoxResult.Yes)
-                    Save_Current_Card_Click(null, null);
+                    return SaveFromBox();
                 else if (Title.EndsWith("*"))
                     Title = Title.Substring(0, Title.Length - 1);
-
             }
+
+            return true;
         }
 
         private void CreateCardsFor(string color, int amount)
@@ -268,13 +287,15 @@ namespace ChromaJSONEditor
             string cur = Directory.GetCurrentDirectory();
             while(!string.IsNullOrEmpty(cur) && !cur.EndsWith(@"JSONTranswriter"))
             {
-                Console.WriteLine("Currently in: " + cur);
+                //Console.WriteLine("Currently in: " + cur);
                 cur = Directory.GetParent(cur)?.ToString();
             }
 
             if (string.IsNullOrEmpty(cur))
                 MessageBox.Show("Please execute this program from within (a subfolder of) this project's repository.", "Error: Default Database Path not found!", MessageBoxButton.OK, MessageBoxImage.Error);
 
+            basePath = cur;
+            syntaxPath = $@"{cur}\Syntax.xshd";
             databasePath = $@"{cur}\content\database\";
         }
 
@@ -371,7 +392,7 @@ namespace ChromaJSONEditor
                         if (holdsShift)
                             Save_All_Click(sender, null);
                         else
-                            Save_Current_Card_Click(sender, null);
+                            SaveFromBox();
                     break;
                 case Key.Delete:
                     Delete_Current_Card_Click(sender, null);
@@ -409,22 +430,35 @@ namespace ChromaJSONEditor
 
         private void Save_Current_Card_Click(object sender, RoutedEventArgs e)
         {
-            lastDisplayedBaseJSON = JSONEditorEditorBox.Text;
+            SaveFromBox();
+        }
+
+        private bool SaveFromBox()
+        {
+            lastDisplayedBaseJSON = JSONEditorBoxText;
 
             hasUnsavedChanges = false;
             if (Title.EndsWith("*"))
                 Title = Title.Substring(0, Title.Length - 1);
 
-            entries[lastUsedIndex] = JsonConvert.DeserializeObject<Database>(JSONEditorEditorBox.Text);
+            try
+            {
+                entries[lastUsedIndex] = JsonConvert.DeserializeObject<Database>(JSONEditorBoxText);
 
-            FillListWithCurrentFilters();
+                FillListWithCurrentFilters();
 
-            SerializeInJSONFile();
+                SerializeInJSONFile();
+                return true;
+            } catch (JsonReaderException exception)
+            {
+                MessageBox.Show($"Upon saving, an error occured:\n{exception.Message}\n\nPlease remember to check if your syntax is correct! Especially when it comes to using the right brackets.\n\nHelp can be found here: https://www.w3resource.com/JSON/structures.php", "Reader Error!", MessageBoxButton.OK, MessageBoxImage.Error);
+                return false;
+            }
         }
 
         private void Save_All_Click(object sender, RoutedEventArgs e)
         {
-            Save_Current_Card_Click(sender, e);
+            SaveFromBox();
         }
 
         private void Load_Click(object sender, RoutedEventArgs e)
@@ -479,9 +513,10 @@ namespace ChromaJSONEditor
             {
                 ListBox selected = (ListBox)sender;
 
-                CheckForUnsavedChanges();
+                bool success = CheckForUnsavedChanges();
 
-                ShowJSONEntry(GetEntryFromID(selected.SelectedItem?.ToString().Split('\t')[0]));
+                if (success)
+                    ShowJSONEntry(GetEntryFromID(selected.SelectedItem?.ToString().Split('\t')[0]));
             }
         }
 

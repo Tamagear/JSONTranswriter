@@ -28,9 +28,6 @@
       "level": "1",
       "card_type": "leader",
       "cost": "0",
-      "throwaway_cost": "0",
-      "space": "0",
-      "strength": "0",
       "health": "120",
       "life_cloth_thresholds": [
         "15",
@@ -39,7 +36,6 @@
         "75",
         "90"
       ],
-      "spell_speed": "0",
       "is_life_cloth": "0"
     },
     {

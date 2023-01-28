@@ -500,9 +500,16 @@
     },
     {
       "ID": "Rx0023",
-      "name": "<New Card>",
+      "name": "Rocket Engineer",
+      "description": "[Architect]When this unit enters the battlefield: The next time an allied unit is summoned this turn, grant it Haste.",
       "color": "red",
-      "card_type": "leader"
+      "level": "1",
+      "card_type": "unit",
+      "cost": "3",
+      "throwaway_cost": "2",
+      "space": "1",
+      "strength": "20",
+      "health": "30"
     },
     {
       "ID": "Px0000",
