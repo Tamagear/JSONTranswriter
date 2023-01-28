@@ -38,6 +38,10 @@ Upon generation, a template is applied and colorized according to the card infor
 ## License
 Licensed via [GNU GPL 3.0](https://www.gnu.org/licenses/gpl-3.0), but commercial use is strongly prohibited. Any rights to the names, projects and affiliations of the authors are to be preserved. Images generated or found by this program are probably not owned by the author and belong to their respective owners.
 
+## Potential Future Updates
+- Export as .csv / .xlsx
+- Online Access
+
 -----
 
 ![Official Artwork - Lin & Kris](https://cdn.discordapp.com/attachments/923610318893121606/1068646804285042718/bg.png)
